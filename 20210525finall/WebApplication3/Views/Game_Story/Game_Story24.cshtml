@@ -1,0 +1,244 @@
+﻿@model IEnumerable<WebApplication3.Models.Game_mall>
+@{
+    ViewData["Title"] = "Game_Story24";
+    Layout = "Game_index";
+}
+@foreach (var item in Model)
+{
+    if (item.Game_number == 24)
+    {
+        <section id="Game_Story_title">
+            <div class="container text-warning">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="row container">
+                            <div class="col-md-12">
+                                <h1>@Html.DisplayFor(modelItem => item.Game_name)</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="Game_Story_imgmax">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="col-md-12">
+                            <div class="swiper-container gallery-top">
+                                <div class="swiper-wrapper">
+                                    @for (int i = 1; i <= 8; i++)
+                                    {
+                                        string img = $"Game_Story24-{i}.png";
+                                        <div class="swiper-slide"><img src="~/img/Game_Story/Game_Story24/@img"></div>
+                                    }
+                                </div>
+                                <!-- Add Arrows -->
+                                <div class="swiper-button-next swiper-button-white swiper-opacity"></div>
+                                <div class="swiper-button-prev swiper-button-white swiper-opacity"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="Game_Story_imgmin">
+            <div class="container ">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="col-md-12">
+                            <div class="swiper-container gallery-thumbs">
+                                <div class="swiper-wrapper">
+                                    @for (int i = 1; i <= 8; i++)
+                                    {
+                                        string img = $"Game_Story24-{i}.png";
+                                        <div class="swiper-slide"><img src="~/img/Game_Story/Game_Story24/@img"></div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Initialize Swiper -->
+        <script>
+            var galleryThumbs = new Swiper('.gallery-thumbs', {
+                spaceBetween: 8,
+                slidesPerView: 3,
+                loop: true,
+                freeMode: true,
+                loopedSlides: 4, //looped slides should be the same
+                watchSlidesVisibility: true,
+                watchSlidesProgress: true,
+            });
+            var galleryTop = new Swiper('.gallery-top', {
+                spaceBetween: 8,
+                loop: true,
+                loopedSlides: 4, //looped slides should be the same
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                thumbs: {
+                    swiper: galleryThumbs,
+                },
+            });
+        </script>
+        <section id="Game_Story_sec1">
+            <div class="container text-white">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="row container">
+                            <div class="col-md-8 margin10px0">
+                                <h3 class="text-warning">遊戲介紹</h3>
+                                <h5>《Teamfight Manager》是經營假想電競戰隊的模擬遊戲，你將成為一名主教練管理選手，進行賽事。把握好各英雄和各選手的特徵，構想出能夠保證勝利的Ban&Pick！優秀的戰略足夠克服選手實力上的劣勢。</h5>
+                            </div>
+                            <div class="col-md-4 margin10px0">
+                                <video autoplay muted loop id="Game_Story_mp4" class="margin10px0">
+                                    <source src="~/img/Game_Story/Game_Story24/Game_Story24-1.mp4" />
+                                    您的瀏覽器不支援此影音播放模式!
+                                </video>
+                                <h6>遊戲類型：@Html.DisplayFor(modelItem => item.Game_category)</h6>
+                                <h6>發行日期：@Html.DisplayFor(modelItem => item.Listing_date)</h6>
+                            </div>
+                            <div class="row h3_color margin10px0" style="width:100%">
+                                <div class="col-md-8">
+                                    <h3>購買：@Html.DisplayFor(modelItem => item.Game_name)</h3>
+                                </div>
+                                <div class="col-md-4">
+                                    <span>@Html.DisplayFor(modelItem => item.Unit_price)</span>
+                                    <form asp-controller="cart" asp-action="stroyaddcart">
+
+                                        <input type="hidden" name="Game_number" value="@item.Game_number">
+                                        <div>
+                                            <input placeholder="購買數量" name="quantity" value="" style="width:100px">
+                                            <button type="submit" style="border: none" data-placement="bottom" data-toggle="popover" data-trigger="hover" title="購物車" data-content="點擊圖片加入購物車">
+                                                <img src="~/img/Game_index/cart.png" />
+                                            </button>
+                                        </div>
+                                    </form>
+                                    <a class="btn btn-success" asp-controller="Cart" asp-action="Buy" asp-route-id="@item.Game_number">直接購買</a>
+                                </div>
+                            </div>
+                            <div class="col-md-12 margin10px0">
+                                <h3 class="text-warning">關於此遊戲</h3>
+                                <h6>在《Teamfight Manager》中，你將成為一名電競戰隊主教練，管理你的團隊。</h6><br>
+                                <h6>有效成長你的戰隊，找到最好戰略，獲得全球總決賽冠軍的榮譽！</h6><br>
+                                <h6>· Ban&Pick 體系</h6>
+                                <p><img src="~/img/Game_Story/Game_Story24/Game_Story24-1.gif" class="margin10px0"></p>
+                                <h6>數十個英雄當中發現最優秀的組合。為了得到最好的結果，要同時考慮你的選手們熟練的英雄，對方選手們熟練的英雄，以及組合之間的相性關係。</h6><br>
+                                <h6>· 賽事進行</h6>
+                                <p><img src="~/img/Game_Story/Game_Story24/Game_Story24-2.gif" class="margin10px0"></p>
+                                <h6>各英雄在一分鐘內以對決方式進行戰鬥，擊殺更多英雄的戰隊獲得勝利。</h6><br>
+                                <h6>· 英雄</h6>
+                                <p><img src="~/img/Game_Story/Game_Story24/Game_Story24-3.gif" class="margin10px0"></p>
+                                <h6>
+                                    英雄具有獨特的特徵，週期使用的基本技能與每小局只能使用一次的大招。要把握英雄的基本能力值和技能的特性，適當選擇英雄才能獲得勝利。
+                                </h6><br>
+                                <h6>· 管理選手</h6>
+                                <p><img src="~/img/Game_Story/Game_Story24/Game_Story24-4.gif" class="margin10px0"></p>
+                                <h6>通過轉會選拔更優秀的選手，或者培養現有的選手，提高團隊戰力。每選手的攻擊能力、防禦能力、英雄熟練度不同，有些選手具有與眾不同的天賦。斟酌團隊資金與選手能力，有效管理你的選手們。</h6><br>
+                                <h6>· 成長戰隊</h6>
+                                <p><img src="~/img/Game_Story/Game_Story24/Game_Story24-5.gif" class="margin10px0"></p>
+                                <h6>通過製造裝備或改善設施，可以給選手們提供更好的環境。提供高性能裝備和良好的環境，讓最優秀的選手們得到最好的結果。</h6><br>
+                                <h6>看來你已經準備好成為教練了。希望你順風揚帆，駛向全球總決賽冠軍！</h6><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    }
+}
+<section id="Game_Story_sec2">
+    <div class="container text-white">
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
+                <div class="col-md-12 margin10px0">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active text-info" data-toggle="tab" href="#Windows">Windows</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-info" data-toggle="tab" href="#Mac_OS_X">Mac OS X</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="Windows">
+                            <div class="row">
+                                <div class="col-md-6 margin10px0">
+                                    <h6>最低配備:</h6>
+                                    <h6>作業系統: Windows 10</h6>
+                                    <h6>處理器: 2.8 Ghz</h6>
+                                    <h6>記憶體: 4 GB 記憶體</h6>
+                                    <h6>顯示卡: 3D Accelerated Card (Not Integrated)</h6>
+                                    <h6>DirectX: 版本：10</h6>
+                                    <h6>網路: 寬頻網際網路連線</h6>
+                                    <h6>儲存空間: 1 GB 可用空間</h6>
+                                    <h6>音效卡: Yes.</h6>
+                                </div>
+                                <div class="col-md-6 margin10px0">
+                                    <h6>建議配備:</h6>
+                                    <h6>作業系統: Windows 10</h6>
+                                    <h6>處理器: 3 Ghz+</h6>
+                                    <h6>記憶體: 8 GB 記憶體</h6>
+                                    <h6>顯示卡: 3D Accelerated Card (Not Integrated)</h6>
+                                    <h6>DirectX: 版本：10</h6>
+                                    <h6>網路: 寬頻網際網路連線</h6>
+                                    <h6>儲存空間: 1 GB 可用空間</h6>
+                                    <h6>音效卡: Yes.</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="Mac_OS_X">
+                            <div class="row">
+                                <div class="col-md-6 margin10px0">
+                                    <h6>最低配備:</h6>
+                                    <h6>處理器: 2.8 Ghz</h6>
+                                    <h6>記憶體: 4 GB 記憶體</h6>
+                                    <h6>顯示卡: 3D Accelerated Card (Not Integrated)</h6>
+                                    <h6>儲存空間: 1 GB 可用空間</h6>
+                                    <h6>音效卡: Yes.</h6>
+                                </div>
+                                <div class="col-md-6 margin10px0">
+                                    <h6>建議配備:</h6>
+                                    <h6>處理器: 3 Ghz+</h6>
+                                    <h6>記憶體: 8 GB 記憶體</h6>
+                                    <h6>顯示卡: 3D Accelerated Card (Not Integrated)</h6>
+                                    <h6>儲存空間: 1 GB 可用空間</h6>
+                                    <h6>音效卡: Yes.</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="Game_Story_sec3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
+                <div class="row container">
+                    <div class="col-md-12 margin10px0">
+                        <h3 class="text-warning">精彩影片</h3>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe src="https://www.youtube.com/embed/VqPe8aVV9r4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe src="https://www.youtube.com/embed/bVGL2iY2AlQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe src="https://www.youtube.com/embed/uhgP7yEgOJA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe src="https://www.youtube.com/embed/cVGcVJtWxNE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

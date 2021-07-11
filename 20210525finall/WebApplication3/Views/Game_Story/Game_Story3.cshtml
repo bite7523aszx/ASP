@@ -1,0 +1,235 @@
+﻿@model IEnumerable<WebApplication3.Models.Game_mall>
+@{
+    ViewData["Title"] = "Game_Story3";
+    Layout = "Game_index";
+}
+@foreach (var item in Model)
+{
+    if (item.Game_number == 3)
+    {
+        <section id="Game_Story_title">
+            <div class="container text-warning">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="row container">
+                            <div class="col-md-12">
+                                <h1>@Html.DisplayFor(modelItem => item.Game_name)</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="Game_Story_imgmax">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="col-md-12">
+                            <div class="swiper-container gallery-top">
+                                <div class="swiper-wrapper">
+                                    @for (int i = 1; i <= 8; i++)
+                                    {
+                                        string img = $"Game_Story3-{i}.png";
+                                        <div class="swiper-slide"><img src="~/img/Game_Story/Game_Story3/@img"></div>
+                                    }
+                                </div>
+                                <!-- Add Arrows -->
+                                <div class="swiper-button-next swiper-button-white swiper-opacity"></div>
+                                <div class="swiper-button-prev swiper-button-white swiper-opacity"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="Game_Story_imgmin">
+            <div class="container ">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="col-md-12">
+                            <div class="swiper-container gallery-thumbs">
+                                <div class="swiper-wrapper">
+                                    @for (int i = 1; i <= 8; i++)
+                                    {
+                                        string img = $"Game_Story3-{i}.png";
+                                        <div class="swiper-slide"><img src="~/img/Game_Story/Game_Story3/@img"></div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Initialize Swiper -->
+        <script>
+            var galleryThumbs = new Swiper('.gallery-thumbs', {
+                spaceBetween: 8,
+                slidesPerView: 3,
+                loop: true,
+                freeMode: true,
+                loopedSlides: 4, //looped slides should be the same
+                watchSlidesVisibility: true,
+                watchSlidesProgress: true,
+            });
+            var galleryTop = new Swiper('.gallery-top', {
+                spaceBetween: 8,
+                loop: true,
+                loopedSlides: 4, //looped slides should be the same
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                thumbs: {
+                    swiper: galleryThumbs,
+                },
+            });
+        </script>
+        <section id="Game_Story_sec1">
+            <div class="container text-white">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="row container">
+                            <div class="col-md-8 margin10px0">
+                                <h3 class="text-warning">遊戲介紹</h3>
+                                <h5>Be the leader of wobblers from ancient lands, spooky places, and fantasy worlds. Watch them fight in simulations made with the wobbliest physics system ever created, make your own wobblers in the unit creator and send your army off to fight your friends in multiplayer.</h5>
+                            </div>
+                            <div class="col-md-4 margin10px0">
+                                <video autoplay muted loop id="Game_Story_mp4" class="margin10px0">
+                                    <source src="~/img/Game_Story/Game_Story3/Game_Story3-1.mp4" />
+                                    您的瀏覽器不支援此影音播放模式!
+                                </video>
+                                <h6>遊戲類型：@Html.DisplayFor(modelItem => item.Game_category)</h6>
+                                <h6>發行日期：@Html.DisplayFor(modelItem => item.Listing_date)</h6>
+                            </div>
+                            <div class="row h3_color margin10px0" style="width:100%">
+                                <div class="col-md-8">
+                                    <h3>購買：@Html.DisplayFor(modelItem => item.Game_name)</h3>
+                                </div>
+                                <div class="col-md-4">
+                                    <span>@Html.DisplayFor(modelItem => item.Unit_price)</span>
+                                    <form asp-controller="cart" asp-action="stroyaddcart">
+
+                                        <input type="hidden" name="Game_number" value="@item.Game_number">
+                                        <div>
+                                            <input placeholder="購買數量" name="quantity" value="" style="width:100px">
+                                            <button type="submit" style="border: none" data-placement="bottom" data-toggle="popover" data-trigger="hover" title="購物車" data-content="點擊圖片加入購物車">
+                                                <img src="~/img/Game_index/cart.png" />
+                                            </button>
+                                        </div>
+                                    </form>
+                                    <a class="btn btn-success" asp-controller="Cart" asp-action="Buy" asp-route-id="@item.Game_number">直接購買</a>
+                                </div>
+                            </div>
+                            <div class="col-md-12 margin10px0">
+                                <h3 class="text-warning">關於此遊戲</h3>
+                                <h6>"《Dorfromantik》是一款讓你享受身心寧靜的策略型益智遊戲，透過拼湊組合各式各樣的地景板塊，不斷延伸探索多采多姿的村落風景。</h6>
+                                <h6>在《Dorfromantik》中你可以抽離繁忙的現實，沉浸在這個寧靜放鬆的世界，而與此同時，我們也提供給那些想挑戰自己的玩家，透過策略性佈局自己的地景板塊來挑戰高分紀錄。"</h6>
+                                <img src="~/img/Game_Story/Game_Story3/Game_Story3-9.png" class="margin10px0">
+                                <h6>在《Dorfromantik》遊戲開始時你會得到一疊程序化生成的地景板塊，從最上層開始抽取板塊，選擇想放置的未開發區域，旋轉調整最佳的位置來組合創造不同規模的村落地形如森林，小鎮和河流來獲得高分。</h6>
+                            </div>
+                            <div class="col-md-12">
+                                <img src="~/img/Game_Story/Game_Story3/Game_Story3-1.gif" class="margin10px0">
+                                <h6>某些地景板塊會產生特殊的據點任務如: 風車需要連接6個田野地形，火車頭需要鋪10個鐵路來取得分數或是鹿群想要安居在50個樹木以上的森林等等。完成這些任務可以讓你得到更多的可開發區域來拓張你的世界。遊戲會在所有地景板塊用盡後結束。</h6>
+                                <h6>當你在擴張板塊時將會發掘更多不同的生態板塊和出現提供不同獎勵挑戰的特殊地景板塊，完成挑戰可以解鎖更多新的地景板塊、生物群系和更多任務。</h6>
+                                <img src="~/img/Game_Story/Game_Story3/Game_Story3-2.gif" class="margin10px0">
+                            </div>
+                            <div class="col-md-12">
+                                <img src="~/img/Game_Story/Game_Story3/Game_Story3-10.png" class="margin10px0">
+                                <ul>
+                                    <li>打造幅員遼闊的美好風景</li>
+                                    <li>結合策略與益智的獨特玩法</li>
+                                    <li>輕鬆休閒的遊玩方式</li>
+                                    <li>鄉間田野的小鎮風光</li>
+                                    <li>策略佈局挑戰高分紀錄</li>
+                                    <li>高度耐玩性-每一局都不重覆</li>
+                                    <li>各式各樣的生態地景板塊</li>
+                                    <li>如真實桌遊般的原創美術風格</li>
+                                </ul>
+                                <ul>
+                                    <h6>在《Dorfromantik》你不會找到..</h6>
+                                    <li>4X 策略遊戲</li>
+                                    <li>交易買賣</li>
+                                    <li>資源分配管理</li>
+                                    <li>對戰&暴力要素</li>
+                                    <li>多人遊玩模式</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-12">
+                                <img src="~/img/Game_Story/Game_Story3/Game_Story3-11.png" class="margin10px0">
+                                <h6>《Dorfromantik》是由四位來自柏林的遊戲設計系學生所開發，我們共同創立了Toukana Interactive 工作室，並期待在未來繼續帶給大家高品質的原創獨立作品。</h6>
+                                <h6>我們期待大家的遊玩感想與建議! 如果你對遊戲有任何想法或是問題，請不要吝嗇聯繫我們，我們會盡快回覆你們 :)。</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    }
+}
+<section id="Game_Story_sec2">
+    <div class="container text-white">
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
+                <div class="col-md-12 margin10px0">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active text-info" data-toggle="tab" href="#Windows">Windows</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="Windows">
+                            <div class="row">
+                                <div class="col-md-6 margin10px0">
+                                    <h6>最低配備:</h6>
+                                    <h6>作業系統: Windows 7</h6>
+                                    <h6> 2 GHz Dual Core (Intel / AMD)</h6>
+                                    <h6>記憶體: 3 GB 記憶體</h6>
+                                    <h6>顯示卡: Nvidia GT550M | AMD Radeon R7/HD 5650 | Intel HD 520</h6>
+                                    <h6>DirectX: 版本：10</h6>
+                                    <h6>儲存空間: 500 MB 可用空間</h6>
+                                    <h6>音效卡: 用你的想像力自帶音效吧 :)</h6>
+                                </div>
+                                <div class="col-md-6 margin10px0">
+                                    <h6>建議配備:</h6>
+                                    <h6>作業系統: Windows 10</h6>
+                                    <h6> 2.5 GHz Dual Core (Intel / AMD)</h6>
+                                    <h6>記憶體: 4 GB 記憶體</h6>
+                                    <h6>顯示卡: Nvidia GT740M | AMD Radeon R8 | Intel HD 630</h6>
+                                    <h6>DirectX: 版本：10</h6>
+                                    <h6>儲存空間: 500 MB 可用空間</h6>
+                                    <h6>音效卡: 有就好:)。</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="Game_Story_sec3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
+                <div class="row container">
+                    <div class="col-md-12 margin10px0">
+                        <h3 class="text-warning">精彩影片</h3>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe src="https://www.youtube.com/embed/pTwNJXnEV58" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe src="https://www.youtube.com/embed/rsRE2qOdZbk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe src="https://www.youtube.com/embed/pQE2CaGSJh0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe src="https://www.youtube.com/embed/MSN78RXbClA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

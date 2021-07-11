@@ -1,0 +1,227 @@
+﻿@model IEnumerable<WebApplication3.Models.Game_mall>
+@{
+    ViewData["Title"] = "Game_Story30";
+    Layout = "Game_index";
+}
+@foreach (var item in Model)
+{
+    if (item.Game_number == 30)
+    {
+        <section id="Game_Story_title">
+            <div class="container text-warning">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="row container">
+                            <div class="col-md-12">
+                                <h1>@Html.DisplayFor(modelItem => item.Game_name)</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="Game_Story_imgmax">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="col-md-12">
+                            <div class="swiper-container gallery-top">
+                                <div class="swiper-wrapper">
+                                    @for (int i = 1; i <= 8; i++)
+                                    {
+                                        string img = $"Game_Story30-{i}.png";
+                                        <div class="swiper-slide"><img src="~/img/Game_Story/Game_Story30/@img"></div>
+                                    }
+                                </div>
+                                <!-- Add Arrows -->
+                                <div class="swiper-button-next swiper-button-white swiper-opacity"></div>
+                                <div class="swiper-button-prev swiper-button-white swiper-opacity"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="Game_Story_imgmin">
+            <div class="container ">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="col-md-12">
+                            <div class="swiper-container gallery-thumbs">
+                                <div class="swiper-wrapper">
+                                    @for (int i = 1; i <= 8; i++)
+                                    {
+                                        string img = $"Game_Story30-{i}.png";
+                                        <div class="swiper-slide"><img src="~/img/Game_Story/Game_Story30/@img"></div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Initialize Swiper -->
+        <script>
+            var galleryThumbs = new Swiper('.gallery-thumbs', {
+                spaceBetween: 8,
+                slidesPerView: 3,
+                loop: true,
+                freeMode: true,
+                loopedSlides: 4, //looped slides should be the same
+                watchSlidesVisibility: true,
+                watchSlidesProgress: true,
+            });
+            var galleryTop = new Swiper('.gallery-top', {
+                spaceBetween: 8,
+                loop: true,
+                loopedSlides: 4, //looped slides should be the same
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                thumbs: {
+                    swiper: galleryThumbs,
+                },
+            });
+        </script>
+        <section id="Game_Story_sec1">
+            <div class="container text-white">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="row container">
+                            <div class="col-md-8 margin10px0">
+                                <h3 class="text-warning">遊戲介紹</h3>
+                                <h5>A skateboarding game designed from the ground up for VR.</h5>
+                            </div>
+                            <div class="col-md-4 margin10px0">
+                                <video autoplay muted loop id="Game_Story_mp4" class="margin10px0">
+                                    <source src="~/img/Game_Story/Game_Story30/Game_Story30-1.mp4" />
+                                    您的瀏覽器不支援此影音播放模式!
+                                </video>
+                                <h6>遊戲類型：@Html.DisplayFor(modelItem => item.Game_category)</h6>
+                                <h6>發行日期：@Html.DisplayFor(modelItem => item.Listing_date)</h6>
+                            </div>
+                            <div class="row h3_color margin10px0" style="width:100%">
+                                <div class="col-md-8">
+                                    <h3>購買：@Html.DisplayFor(modelItem => item.Game_name)</h3>
+                                </div>
+                                <div class="col-md-4">
+                                    <span>@Html.DisplayFor(modelItem => item.Unit_price)</span>
+                                    <form asp-controller="cart" asp-action="stroyaddcart">
+
+                                        <input type="hidden" name="Game_number" value="@item.Game_number">
+                                        <div>
+                                            <input placeholder="購買數量" name="quantity" value="" style="width:100px">
+                                            <button type="submit" style="border: none" data-placement="bottom" data-toggle="popover" data-trigger="hover" title="購物車" data-content="點擊圖片加入購物車">
+                                                <img src="~/img/Game_index/cart.png" />
+                                            </button>
+                                        </div>
+                                    </form>
+                                    <a class="btn btn-success" asp-controller="Cart" asp-action="Buy" asp-route-id="@item.Game_number">直接購買</a>
+                                </div>
+                            </div>
+                            <div class="col-md-12 margin10px0">
+                                <h3 class="text-warning">關於此遊戲</h3>
+                                <img src="~/img/Game_Story/Game_Story30/Game_Story30-9.png" class="margin10px0">
+                                <h6>A SKATEBOARDING GAME DESIGNED FROM THE GROUND UP FOR VR.</h6>
+                                <h6>
+                                    VR Skater is a highly immersive street skateboarding game. It's a finely tuned mix between arcade and simulation. It's easy to learn, but hard to master. Skate through a wide variety of urban environments. Shred through the streets, take on challenges or chase high scores with complex trick combinations.
+                                </h6><br>
+                                <h6>The game is in an early stage of development. See the Early Access description for more information.</h6>
+                                <h6>Windows Mixed Reality, HP Reverb G2 and VIVE Cosmos Controllers are currently not supported - Do not buy if you use one of those systems!</h6><br>
+                                <h6>FEATURES (Early Access)</h6>
+                                <ul>
+                                    <li>Detailed environments with high resolution textures</li>
+                                    <li>One fully designed and fully skateable map</li>
+                                    <li>Unique skateboarding controls designed for VR motion controllers</li>
+                                    <li>A wide range of street skateboarding tricks</li>
+                                    <li>A Skate Academy to learn all the tricks and complete challenges</li>
+                                    <li>Take to the streets with free practice for fun or chase scores in a run</li>
+                                    <li>Listen to a rousing soundtrack of skateboarding-related genres from emerging artists (5 tracks in version 0.1)</li>
+                                    <li>Break your bones virtually so you don't have to in real life</li>
+                                    <li>Bugs</li>
+                                </ul>
+                                <h6>ON THE ROADMAP</h6>
+                                <ul>
+                                    <li>Career mode (main game mode)</li>
+                                    <li>Level challenges (career mode)</li>
+                                    <li>Online leaderboard</li>
+                                    <li>Local player profiles</li>
+                                    <li>Statistics</li>
+                                    <li>Achievements</li>
+                                    <li>Skateboard customizations</li>
+                                    <li>Many unique maps (at least 6)</li>
+                                    <li>More tricks</li>
+                                    <li>More than 15 handpicked songs</li>
+                                    <li>Alternative royalty free soundtrack for streamers</li>
+                                    <li>More spectator camera options</li>
+                                    <li>Playlist option</li>
+                                    <li>WMR support</li>
+                                    <li>Constant optimization</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    }
+}
+<section id="Game_Story_sec2">
+    <div class="container text-white">
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
+                <div class="col-md-12 margin10px0">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active text-info" data-toggle="tab" href="#Windows">Windows</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="Windows">
+                            <div class="row">
+                                <div class="col-md-6 margin10px0">
+                                    <h6>最低配備: 需要 64 位元的處理器及作業系統</h6>
+                                    <h6>作業系統: Windows 10</h6>
+                                    <h6>處理器: Intel i5-4690 or AMD Ryzen 5 1600</h6>
+                                    <h6>記憶體: 8 GB 記憶體</h6>
+                                    <h6>顯示卡: NVIDIA GTX 1070 or AMD RX Vega 56</h6>
+                                    <h6>儲存空間: 8 GB 可用空間</h6>
+                                </div>
+                                <div class="col-md-6 margin10px0">
+                                    <h6>建議配備:</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="Game_Story_sec3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
+                <div class="row container">
+                    <div class="col-md-12 margin10px0">
+                        <h3 class="text-warning">精彩影片</h3>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe src="https://www.youtube.com/embed/BQIswbKTHrM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe src="https://www.youtube.com/embed/Yns8fnrQ5-4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe src="https://www.youtube.com/embed/X6CMJ6Z0bDs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe src="https://www.youtube.com/embed/qw5pbwpeuyY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

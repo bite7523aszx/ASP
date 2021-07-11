@@ -1,0 +1,84 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/game_index.cshtml";
+}
+
+<h1>結帳</h1>
+<style>
+    #cart {
+        background-color: white;
+    }
+
+    #shop tr, th {
+        padding: 8px;
+    }
+
+        #shop tr:hover {
+            background-color: lightblue;
+        }
+
+    #shop td {
+        color: black
+    }
+</style>
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+<body>
+
+    <div id="cart" class="container">
+        <h1>確認商品</h1>
+
+        <div class="row">
+
+            <div class="col-sm-8">
+
+                <h4>Check out</h4>
+            </div>
+            <div class="col-sm-4 contShop">
+                <p><a asp-controller="Game_mallView" asp-action="index">繼續購物</a>
+            </div>
+        </div>
+        <form>
+            <table id="shop" border="1" class="table table-bordered table-info table-hover">
+                <thead class="table bg-danger">
+                    <tr>
+                        <th>遊戲名稱</th>
+                        <th>遊戲類型</th>
+                        <th>數量</th>
+                        <th>價錢</th>
+                        @*<th>移除購物車</th>*@
+                    </tr>
+                </thead>
+                <tbody class="bg-white">
+                    @foreach (var item in ViewBag.cart)
+                    {
+                        <tr>
+                            <td>@item.Product.Game_name</td>
+                            <td>@item.Product.Game_category</td>
+                            <td>@item.Quantity</td>
+                            <td>@(item.Product.Unit_price * item.Quantity)</td>
+                            @*<td><a asp-controller="cart" asp-action="remove" asp-route-id="@item.Product.Game_number" onclick="return confirm('確定刪除')"><img src="~/img/close.png" /></a></td>*@
+                            @*<td>@(item.Product.Unit_price * item.Quantity)</td>*@
+                        </tr>
+
+                    }
+                    <tr>
+                        <td align="right" colspan="5">
+                            小計 :@ViewBag.total
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right" colspan="5">
+                            <a onclick="return confirm('確定結帳')" asp-controller="check" asp-action="check" asp-route-id="">確定結帳</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+
+        <bt />
+        @*<a asp-controller="Game_mallView" asp-action="index">Coutince Shopping</a>*@
+        @*<a asp-controller="check" asp-action="check" asp-route-id="">確定結帳</a>*@
+    </div>
+</body>

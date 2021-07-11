@@ -1,0 +1,205 @@
+﻿@model IEnumerable<WebApplication3.Models.Game_mall>
+@{
+    ViewData["Title"] = "Game_Story20";
+    Layout = "Game_index";
+}
+@foreach (var item in Model)
+{
+    if (item.Game_number == 20)
+    {
+        <section id="Game_Story_title">
+            <div class="container text-warning">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="row container">
+                            <div class="col-md-12">
+                                <h1>@Html.DisplayFor(modelItem => item.Game_name)</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="Game_Story_imgmax">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="col-md-12">
+                            <div class="swiper-container gallery-top">
+                                <div class="swiper-wrapper">
+                                    @for (int i = 1; i <= 8; i++)
+                                    {
+                                        string img = $"Game_Story20-{i}.png";
+                                        <div class="swiper-slide"><img src="~/img/Game_Story/Game_Story20/@img"></div>
+                                    }
+                                </div>
+                                <!-- Add Arrows -->
+                                <div class="swiper-button-next swiper-button-white swiper-opacity"></div>
+                                <div class="swiper-button-prev swiper-button-white swiper-opacity"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="Game_Story_imgmin">
+            <div class="container ">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="col-md-12">
+                            <div class="swiper-container gallery-thumbs">
+                                <div class="swiper-wrapper">
+                                    @for (int i = 1; i <= 8; i++)
+                                    {
+                                        string img = $"Game_Story20-{i}.png";
+                                        <div class="swiper-slide"><img src="~/img/Game_Story/Game_Story20/@img"></div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Initialize Swiper -->
+        <script>
+            var galleryThumbs = new Swiper('.gallery-thumbs', {
+                spaceBetween: 8,
+                slidesPerView: 3,
+                loop: true,
+                freeMode: true,
+                loopedSlides: 4, //looped slides should be the same
+                watchSlidesVisibility: true,
+                watchSlidesProgress: true,
+            });
+            var galleryTop = new Swiper('.gallery-top', {
+                spaceBetween: 8,
+                loop: true,
+                loopedSlides: 4, //looped slides should be the same
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                thumbs: {
+                    swiper: galleryThumbs,
+                },
+            });
+        </script>
+        <section id="Game_Story_sec1">
+            <div class="container text-white">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="row container">
+                            <div class="col-md-8 margin10px0">
+                                <h3 class="text-warning">遊戲介紹</h3>
+                                <h5>Home Sweet Home is back with its soul-stirring sequel that will haunt you to the ground ! Immerse yourself in a world of Thai myths, let's fight together to get out of this horrifying world. The 4vs1 game from a Thai studio that will give you the experience of hunting and being hunted in one game.</h5>
+                            </div>
+                            <div class="col-md-4 margin10px0">
+                                <video autoplay muted loop id="Game_Story_mp4" class="margin10px0">
+                                    <source src="~/img/Game_Story/Game_Story20/Game_Story20-1.mp4" />
+                                    您的瀏覽器不支援此影音播放模式!
+                                </video>
+                                <h6>遊戲類型：@Html.DisplayFor(modelItem => item.Game_category)</h6>
+                                <h6>發行日期：@Html.DisplayFor(modelItem => item.Listing_date)</h6>
+                            </div>
+                            <div class="row h3_color margin10px0" style="width:100%">
+                                <div class="col-md-8">
+                                    <h3>購買：@Html.DisplayFor(modelItem => item.Game_name)</h3>
+                                </div>
+                                <div class="col-md-4">
+                                    <span>@Html.DisplayFor(modelItem => item.Unit_price)</span>
+                                    <form asp-controller="cart" asp-action="stroyaddcart">
+
+                                        <input type="hidden" name="Game_number" value="@item.Game_number">
+                                        <div>
+                                            <input placeholder="購買數量" name="quantity" value="" style="width:100px">
+                                            <button type="submit" style="border: none" data-placement="bottom" data-toggle="popover" data-trigger="hover" title="購物車" data-content="點擊圖片加入購物車">
+                                                <img src="~/img/Game_index/cart.png" />
+                                            </button>
+                                        </div>
+                                    </form>
+                                    <a class="btn btn-success" asp-controller="Cart" asp-action="Buy" asp-route-id="@item.Game_number">直接購買</a>
+                                </div>
+                            </div>
+                            <div class="col-md-12 margin10px0">
+                                <h3 class="text-warning">關於此遊戲</h3>
+                                <h6>Home Sweet Home: Survive is a brand new asymmetrical game that consists of 1 Specter hunting 4 survivors in an arena. There are two core gameplays depended on the role players take.</h6>
+                                <h6>The Specter is to strategically hunt 4 Survivors letting no one escape, and not being killed by survivors. Each Specter will have different stats and special abilities offering various ways of hunting survivors.</h6>
+                                <h6>The survivors have to cooperate to complete the objective. Each character will have different stats and unique abilities supporting each role of play - decoy, damage, or perform the rituals. Things will drastically change after the objective is completed. The game will test personal dilemma choosing either teaming up to eliminate the Specter or saving own self by leaving the arena. escaping the Hindrance, or be the Specter and hunt and collect souls.</h6><br>
+                                <h6>Key Features</h6>
+                                <ul>
+                                    <li>Multiplayer – Enjoy the game in multiplayer, cooperating with other survivors or being a lone wolf hunting down survivors</li><br>
+                                    <li>Differentiated Gameplay – Asymmetrical gameplay does not need to be an escape game. The Specter cannot play recklessly; survivors can hunt you down as well. Good team play is the winning key for survivors.</li><br>
+                                    <li>Repeatable Gameplay – Each game will not be the same even playing with the same group of people. Experiencing the game that situations are always changed with various settings and characters.</li><br>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    }
+}
+<section id="Game_Story_sec2">
+    <div class="container text-white">
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
+                <div class="col-md-12 margin10px0">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active text-info" data-toggle="tab" href="#Windows">Windows</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="Windows">
+                            <div class="row">
+                                <div class="col-md-6 margin10px0">
+                                    <h6>最低配備: 需要 64 位元的處理器及作業系統</h6>
+                                    <h6>作業系統: Windows 10 (64-bit Version)</h6>
+                                    <h6>處理器: Intel i3-6100</h6>
+                                    <h6>記憶體: 8 GB 記憶體</h6>
+                                    <h6>顯示卡: NVIDIA GTX 660 2GB</h6>
+                                    <h6>網路: 寬頻網際網路連線</h6>
+                                    <h6>儲存空間: 7 GB 可用空間</h6>
+                                </div>
+                                <div class="col-md-6 margin10px0">
+                                    <h6>建議配備:</h6>
+                                    <h6>作業系統: Windows 10 (64-bit Version)</h6>
+                                    <h6>處理器: Intel i5-8400</h6>
+                                    <h6>記憶體: 8 GB 記憶體</h6>
+                                    <h6>顯示卡: NVIDIA GTX 1060 6GB</h6>
+                                    <h6>網路: 寬頻網際網路連線</h6>
+                                    <h6>儲存空間: 7 GB 可用空間</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+<section id="Game_Story_sec3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
+                <div class="row container">
+                    <div class="col-md-12 margin10px0">
+                        <h3 class="text-warning">精彩影片</h3>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe src="https://www.youtube.com/embed/6AqJXUrwPWU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe src="https://www.youtube.com/embed/l8JO0v6hzqg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe src="https://www.youtube.com/embed/u4iZIiAKmcY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe src="https://www.youtube.com/embed/SfUSeQQJtyc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

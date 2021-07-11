@@ -1,0 +1,71 @@
+﻿@model WebApplication3.ViewModel.Game_mallCommentViewModel
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "game_index";
+
+    var ratingSum = ViewBag.RatingSum;
+    var ratingCount = ViewBag.RatingCount;
+
+    decimal rating = 0;
+    if (ratingCount > 0)
+    {
+        rating = (ratingSum / ratingCount);
+    }
+
+    var totalRating = decimal.Parse(rating.ToString());
+}
+
+    <link rel=stylesheet type="text/css" href="~/css/Game_Story_Comment.css">
+<section id="Game_Story_Comment">
+    <div class="container text-white">
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
+                <div class="container">
+                    <h2 class="text-warning">@Model.Game_name </h2>
+                    <small>( 目前 @ratingCount 人評價 )</small>
+                    <div>
+                        <span class="starFadeN" id="sRate1"></span>
+                        <span class="starFadeN" id="sRate2"></span>
+                        <span class="starFadeN" id="sRate3"></span>
+                        <span class="starFadeN" id="sRate4"></span>
+                        <span class="starFadeN" id="sRate5"></span>
+                    </div>
+
+                    @foreach (var c in Model.ListOfComments)
+                    {
+                        <hr />
+                        <div class="col-md-3">
+                            <i>@c.PublishedDate</i><br />
+
+                            @for (var i = 1; i <= c.Rating; i++)
+                            {
+                                <span class="starGlowN"></span>
+                            }
+
+                            @for (var i = (c.Rating + 1); i <= 5; i++)
+                            {
+                                <span class="starFadeN"></span>
+                            }
+                        </div>
+                        <div class="col-md-9">
+                            @Html.Raw(c.Comments.Replace("\n", "<br />"))
+                        </div>
+                    }
+                    <hr />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<partial name="_CommentBox" />
+
+<script>
+    SCRate();
+    function SCRate() {
+    for (let i = 1; i <= @totalRating; i++) {                
+        $("#sRate"+ i).addClass("starGlowN");
+        }
+    }
+</script>

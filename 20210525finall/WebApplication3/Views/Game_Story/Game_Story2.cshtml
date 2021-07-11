@@ -1,0 +1,207 @@
+﻿@model IEnumerable<WebApplication3.Models.Game_mall>
+@{
+    ViewData["Title"] = "Game_Story2";
+    Layout = "Game_index";
+}
+@foreach (var item in Model)
+{
+    if (item.Game_number == 2)
+    {
+        <section id="Game_Story_title">
+            <div class="container text-warning">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="row container">
+                            <div class="col-md-12">
+                                <h1>@Html.DisplayFor(modelItem => item.Game_name)</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="Game_Story_imgmax">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="col-md-12">
+                            <div class="swiper-container gallery-top">
+                                <div class="swiper-wrapper">
+                                    @for (int i = 1; i <= 8; i++)
+                                    {
+                                        string img = $"Game_Story2-{i}.png";
+                                        <div class="swiper-slide"><img src="~/img/Game_Story/Game_Story2/@img"></div>
+                                    }
+                                </div>
+                                <!-- Add Arrows -->
+                                <div class="swiper-button-next swiper-button-white swiper-opacity"></div>
+                                <div class="swiper-button-prev swiper-button-white swiper-opacity"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="Game_Story_imgmin">
+            <div class="container ">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="col-md-12">
+                            <div class="swiper-container gallery-thumbs">
+                                <div class="swiper-wrapper">
+                                    @for (int i = 1; i <= 8; i++)
+                                    {
+                                        string img = $"Game_Story2-{i}.png";
+                                        <div class="swiper-slide"><img src="~/img/Game_Story/Game_Story2/@img"></div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Initialize Swiper -->
+        <script>
+            var galleryThumbs = new Swiper('.gallery-thumbs', {
+                spaceBetween: 8,
+                slidesPerView: 3,
+                loop: true,
+                freeMode: true,
+                loopedSlides: 4, //looped slides should be the same
+                watchSlidesVisibility: true,
+                watchSlidesProgress: true,
+            });
+            var galleryTop = new Swiper('.gallery-top', {
+                spaceBetween: 8,
+                loop: true,
+                loopedSlides: 4, //looped slides should be the same
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                thumbs: {
+                    swiper: galleryThumbs,
+                },
+            });
+        </script>
+        <section id="Game_Story_sec1">
+            <div class="container text-white">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="row container">
+                            <div class="col-md-8 margin10px0">
+                                <h3 class="text-warning">遊戲介紹</h3>
+                                <h5>在建立房產帝國的道路上，成為一名包租公並設法處理製造麻煩的房客。考慮清楚如何面對憤怒的鄰居或是警方的干涉。你會把房子租給一對大學情侶還是養了四隻貓咪的老奶奶？</h5>
+                            </div>
+                            <div class="col-md-4 margin10px0">
+                                <video autoplay muted loop id="Game_Story_mp4" class="margin10px0">
+                                    <source src="~/img/Game_Story/Game_Story2/Game_Story2-1.mp4" />
+                                    您的瀏覽器不支援此影音播放模式!
+                                </video>
+                                <h6>遊戲類型：@Html.DisplayFor(modelItem => item.Game_category)</h6>
+                                <h6>發行日期：@Html.DisplayFor(modelItem => item.Listing_date)</h6>
+                            </div>
+                            <div class="row h3_color margin10px0" style="width:100%">
+                                <div class="col-md-8">
+                                    <h3>購買：@Html.DisplayFor(modelItem => item.Game_name)</h3>
+                                </div>
+                                <div class="col-md-4">
+                                    <span>@Html.DisplayFor(modelItem => item.Unit_price)</span>
+                                    <form asp-controller="cart" asp-action="stroyaddcart">
+
+                                        <input type="hidden" name="Game_number" value="@item.Game_number">
+                                        <div>
+                                            <input placeholder="購買數量" name="quantity" value="" style="width:100px">
+                                            <button type="submit" style="border: none" data-placement="bottom" data-toggle="popover" data-trigger="hover" title="購物車" data-content="點擊圖片加入購物車">
+                                                <img src="~/img/Game_index/cart.png" />
+                                            </button>
+                                        </div>
+                                    </form>
+                                    <a class="btn btn-success" asp-controller="Cart" asp-action="Buy" asp-route-id="@item.Game_number">直接購買</a>
+                                </div>
+                            </div>
+                            <div class="col-md-12 margin10px0">
+                                <h3 class="text-warning">關於此遊戲</h3>
+                                <img src="~/img/Game_Story/Game_Story2/Game_Story2-1.gif" class="margin10px0">
+                                <h6>仔細選擇房客，準備應對各種複雜的狀況...你永遠不知道接下來會出現什麼麻煩：憤怒的鄰居，問題不斷的房客，甚至還有警方介入。記得要隨時保持警戒！</h6>
+                            </div>
+                            <div class="col-md-12">
+                                <img src="~/img/Game_Story/Game_Story2/Game_Story2-2.gif" class="margin10px0">
+                                <h6>悉心設計你的公寓，讓它們看起來煥然一新。換掉老舊的油漆，再添置一些新家具，就算是只翻修地板也不錯，但是也別太鋪張！房子看起來越漂亮，你賺的錢越多！</h6>
+                            </div>
+                            <div class="col-md-12">
+                                <img src="~/img/Game_Story/Game_Story2/Game_Story2-3.gif" class="margin10px0">
+                                <h6>睿智的投資眼光才能實現最大利潤。緊盯最好的投資機會，發現商機就迅速出擊。你是「高風險高收益」的信徒還是穩健的投資人？一切取決於你！</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    }
+}
+<section id="Game_Story_sec2">
+    <div class="container text-white">
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
+                <div class="col-md-12 margin10px0">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active text-info" data-toggle="tab" href="#Windows">Windows</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="Windows">
+                            <div class="row">
+                                <div class="col-md-6 margin10px0">
+                                    <h6>最低配備: 需要 64 位元的處理器及作業系統</h6>
+                                    <h6>作業系統: Windows 7 (64-bit) or newer</h6>
+                                    <h6>處理器: Intel Core i3-4130 / Phenom x4 955</h6>
+                                    <h6>記憶體: 4 GB 記憶體</h6>
+                                    <h6>顯示卡: GeForce GTX 560 / AMD R7-260X</h6>
+                                    <h6>DirectX: 版本：11</h6>
+                                    <h6>儲存空間: 4 GB 可用空間</h6>
+                                </div>
+                                <div class="col-md-6 margin10px0">
+                                    <h6>建議配備: 需要 64 位元的處理器及作業系統</h6>
+                                    <h6>作業系統: Windows 7 (64-bit) or newer</h6>
+                                    <h6>處理器: Intel Core i5-8400 / AMD Ryzen 3 1200</h6>
+                                    <h6>記憶體: 8 GB 記憶體</h6>
+                                    <h6>顯示卡: GeForce GTX 650 / AMD Radeon RX 580</h6>
+                                    <h6>DirectX: 版本：11</h6>
+                                    <h6>儲存空間: 4 GB 可用空間</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="Game_Story_sec3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
+                <div class="row container">
+                    <div class="col-md-12 margin10px0">
+                        <h3 class="text-warning">精彩影片</h3>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe src="https://www.youtube.com/embed/gASo0f2Btw8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe src="https://www.youtube.com/embed/15ABfI15hSY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe src="https://www.youtube.com/embed/86eO__zAYN8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe src="https://www.youtube.com/embed/Rv8voqsJkpE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

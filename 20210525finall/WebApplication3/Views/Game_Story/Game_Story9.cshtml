@@ -1,0 +1,241 @@
+﻿@model IEnumerable<WebApplication3.Models.Game_mall>
+@{
+    ViewData["Title"] = "Game_Story9";
+    Layout = "Game_index";
+}
+@foreach (var item in Model)
+{
+    if (item.Game_number == 9)
+    {
+        <section id="Game_Story_title">
+            <div class="container text-warning">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="row container">
+                            <div class="col-md-12">
+                                <h1>@Html.DisplayFor(modelItem => item.Game_name)</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="Game_Story_imgmax">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="col-md-12">
+                            <div class="swiper-container gallery-top">
+                                <div class="swiper-wrapper">
+                                    @for (int i = 1; i <= 8; i++)
+                                    {
+                                        string img = $"Game_Story9-{i}.png";
+                                        <div class="swiper-slide"><img src="~/img/Game_Story/Game_Story9/@img"></div>
+                                    }
+                                </div>
+                                <!-- Add Arrows -->
+                                <div class="swiper-button-next swiper-button-white swiper-opacity"></div>
+                                <div class="swiper-button-prev swiper-button-white swiper-opacity"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="Game_Story_imgmin">
+            <div class="container ">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="col-md-12">
+                            <div class="swiper-container gallery-thumbs">
+                                <div class="swiper-wrapper">
+                                    @for (int i = 1; i <= 8; i++)
+                                    {
+                                        string img = $"Game_Story9-{i}.png";
+                                        <div class="swiper-slide"><img src="~/img/Game_Story/Game_Story9/@img"></div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Initialize Swiper -->
+        <script>
+            var galleryThumbs = new Swiper('.gallery-thumbs', {
+                spaceBetween: 8,
+                slidesPerView: 3,
+                loop: true,
+                freeMode: true,
+                loopedSlides: 4, //looped slides should be the same
+                watchSlidesVisibility: true,
+                watchSlidesProgress: true,
+            });
+            var galleryTop = new Swiper('.gallery-top', {
+                spaceBetween: 8,
+                loop: true,
+                loopedSlides: 4, //looped slides should be the same
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                thumbs: {
+                    swiper: galleryThumbs,
+                },
+            });
+        </script>
+        <section id="Game_Story_sec1">
+            <div class="container text-white">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="row container">
+                            <div class="col-md-8 margin10px0">
+                                <h3 class="text-warning">遊戲介紹</h3>
+                                <h5>Ultimate Admiral: Age of Sail is a tactical wargame from the creators of the Ultimate General series set amidst the epic naval campaigns in the period of the American Revolutionary and Napoleonic Wars.</h5>
+                            </div>
+                            <div class="col-md-4 margin10px0">
+                                <video autoplay muted loop id="Game_Story_mp4" class="margin10px0">
+                                    <source src="~/img/Game_Story/Game_Story9/Game_Story9-1.mp4" />
+                                    您的瀏覽器不支援此影音播放模式!
+                                </video>
+                                <h6>遊戲類型：@Html.DisplayFor(modelItem => item.Game_category)</h6>
+                                <h6>發行日期：@Html.DisplayFor(modelItem => item.Listing_date)</h6>
+                            </div>
+                            <div class="row h3_color margin10px0" style="width:100%">
+                                <div class="col-md-8">
+                                    <h3>購買：@Html.DisplayFor(modelItem => item.Game_name)</h3>
+                                </div>
+                                <div class="col-md-4">
+                                    <span>@Html.DisplayFor(modelItem => item.Unit_price)</span>
+                                    <form asp-controller="cart" asp-action="stroyaddcart">
+
+                                        <input type="hidden" name="Game_number" value="@item.Game_number">
+                                        <div>
+                                            <input placeholder="購買數量" name="quantity" value="" style="width:100px">
+                                            <button type="submit" style="border: none" data-placement="bottom" data-toggle="popover" data-trigger="hover" title="購物車" data-content="點擊圖片加入購物車">
+                                                <img src="~/img/Game_index/cart.png" />
+                                            </button>
+                                        </div>
+                                    </form>
+                                    <a class="btn btn-success" asp-controller="Cart" asp-action="Buy" asp-route-id="@item.Game_number">直接購買</a>
+                                </div>
+                            </div>
+                            <div class="col-md-12 margin10px0">
+                                <h3 class="text-warning">關於此遊戲</h3>
+                                <h6>A TRULY UNIQUE NAVAL WARGAME EXPERIENCE</h6><br>
+                                <h6>Ultimate Admiral: Age of Sail is a unique wargame allowing you to experience the best of the Ultimate Series AI and tactical engine in naval, land, and combined arms landing operations.</h6>
+                                <h6>Taking the role of a famous commander, you will be at the heart of the historical battles and events.</h6>
+                                <ul>
+                                    <li>In the British Campaign, you will follow Horatio’s Nelson journey from midshipman on the shores of Central America to the admiral who defeated the great armada in the battle of Trafalgar.</li>
+                                    <li>In the American campaign, you will play the role of John Paul Jones, participate in the War of Independence and stand at the origins of the United States Navy winning freedom for your country.</li>
+                                </ul><br>
+                                <h6>REALISTIC SAILING</h6>
+                                <h6>Individual wind plans are based on each ship's rigging. Realistic sailing physics replicates the behavior of actual ships where yard position changes based on the chosen course and direction of the wind. When at full sail your relative position to the wind can cause your ship to roll and block your guns from firing effectively. Moving with full sails in strong winds can also capsize your ship. When sailing against the wind ships can be pushed backward.</h6><br>
+                                <h6>DETAILED DAMAGE MODEL</h6>
+                                <h6>Unique aiming system where you can assign a target to focus your gunner's aim on any part of a ship. A detailed damage model allows for the destruction of all ship components. Realistic ballistics and impact physics that account for energy, penetration, obstacles, and ricochets. Thickness based planking system where protection degrades as the planking is damaged. Planking penetration is also influenced by shot angle and material quality.</h6><br>
+                                <h6>HISTORICAL SHIPS AND WEAPONS</h6>
+                                <h6>We recreated the beautiful ships of the Age of Sail period from historical or admiralty collections drafts. Accurate hull models, sail plans, guns, internal upgrades, historical speed trials were used in the creation of vessels. We spent hundreds of hours researching numerous details on historical gunnery and firearms of the age of sail. Historical availability has also been implemented. Certain ships and weapons can only be captured by boarding ships or taken from the enemy on the battlefield.</h6><br>
+                                <h6>NAVAL BATTLES</h6>
+                                <p><img src="~/img/Game_Story/Game_Story9/Game_Story9-1.gif" class="margin10px0"></p>
+                                <h6>To win battles you will need to master the art of maneuvering at sea. In the Age of Sail, proper positioning is of the utmost importance. Gain the weather gage, sustain powerful broadsides, and anticipate the lumbering movement of enemy ships-of-the-line. Approach to deliver a broadside at your own peril; even the most experienced captains risk demasting, loss of the ships, or death when engaging the enemy.</h6><br>
+                                <h6>LANDING OPERATIONS</h6>
+                                <p><img src="~/img/Game_Story/Game_Story9/Game_Story9-2.gif" class="margin10px0"></p>
+                                <h6>When broadsides are not enough; you bring the Marines! Your hardy sea infantry can board vessels, conduct landing operations, and join land forces in assaulting enemy batteries and other fortifications. Manage cover, positioning, and morale to lead your forces to victory!</h6><br>
+                                <h6>LAND BATTLES</h6>
+                                <p><img src="~/img/Game_Story/Game_Story9/Game_Story9-3.gif" class="margin10px0"></p>
+                                <h6>Control of the seas is only half the battle. Whether on the New World, Venerable Europe, or the many islands in-between, once the war at sea is over, an invasion must commence. Take control of more traditional national armies to combat your enemies on land in major campaigns and where your small force of marines will not do.</h6><br>
+                                <h6>GAMEPLAY</h6>
+                                <h6>Build your fleet: Success on the high seas will earn you promotions. Grow your fleet from a small squadron of unrated ships to a fearsome battle fleet complete with powerful ships-of-the-line. Customize your ships with new technology, weapons, to create a fleet that fits your tactical doctrine.</h6>
+                                <h6>Manage your crews: With every naval engagement, your crewmen become more efficient and deadly. With every shot, their accuracy and gunnery improve. While sailing they improve their stamina and fine control of their ship. Board enemy ships and land marines to build proficiency in combat. Of course, every veteran’s death is a huge blow to the navy.</h6>
+                                <h6>Gain reputation and promotions: Participating in battles you will receive an experience that will allow you to develop your admiral. Develop your tactical doctrines, build fast and maneuverable squadrons, or slow heavily armed ships of the line to control the seas. Receive bonuses to supply, improve relations with the Admiralty, replenish crew, lower equipment prices, and gain other advantages to assist your campaigns.</h6><br>
+                                <h6>IMPORTANCE OF LOGISTICS AND INTERDICTION</h6>
+                                <h6>The game simulates naval warfare with small actions to huge fleet battles and amphibious operations to control the world’s oceans and shores. Fleets and flotillas are crucial for the logistical support of war requiring transportation of materials, goods, treasures, and troops. Your naval vessels have the capability to make decisive strikes against the opponent fleets or interdict their supply lines.</h6><br>
+                                <h6>HISTORICAL CAMPAIGNS</h6>
+                                <h6>Fight in the campaignы and participate in 80+ battles from small engagements to massive battles over land and sea. The campaign fully depends on player actions and battle results. The game includes the following famous battles in campaigns:</h6>
+                                <ul>
+                                    <li>Battle of Bunker Hill (1775)</li>
+                                    <li>Burning of Norfolk (1776)</li>
+                                    <li>Siege of Savannah (1779)</li>
+                                    <li>Battle of Cape Henry (1781)</li>
+                                    <li>Battle of the Chesapeake (1781)</li>
+                                    <li>Siege of Toulon (1793)</li>
+                                    <li>Battle of Cape St. Vincent (1797)</li>
+                                    <li>Battle of the Nile (1798)</li>
+                                    <li>Battle of Trafalgar (1805)</li>
+                                    <li>70 additional historical and speculative battles and actions</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    }
+}
+<section id="Game_Story_sec2">
+    <div class="container text-white">
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
+                <div class="col-md-12 margin10px0">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active text-info" data-toggle="tab" href="#Windows">Windows</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="Windows">
+                            <div class="row">
+                                <div class="col-md-6 margin10px0">
+                                    <h6>最低配備: 需要 64 位元的處理器及作業系統</h6>
+                                    <h6>作業系統: 64-bit Windows 10 / 8.1 / 7 with Service Pack 1</h6>
+                                    <h6>處理器: Intel Core i3-2100 (3.1 GHz) or equivalent</h6>
+                                    <h6>記憶體: 2 GB 記憶體</h6>
+                                    <h6>顯示卡: 2GB AMD 7970 or nVidia 770 or greater</h6>
+                                    <h6>DirectX: 版本：11</h6>
+                                    <h6>儲存空間: 11 GB 可用空間</h6>
+                                    <h6>音效卡: DirectX Compatible Sound Card</h6>
+                                </div>
+                                <div class="col-md-6 margin10px0">
+                                    <h6>建議配備: 需要 64 位元的處理器及作業系統</h6>
+                                    <h6>作業系統: 64-bit Windows 10 / 8.1 / 7 with Service Pack 1</h6>
+                                    <h6>處理器: Intel i5-6600 | Ryzen 5 2600X</h6>
+                                    <h6>記憶體: 4 GB 記憶體</h6>
+                                    <h6>顯示卡: GTX 970 | R9 Fury X 4GB VRAM</h6>
+                                    <h6>DirectX: 版本：11</h6>
+                                    <h6>儲存空間: 11 GB 可用空間</h6>
+                                    <h6>音效卡: DirectX Compatible Sound Card</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="Game_Story_sec3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
+                <div class="row container">
+                    <div class="col-md-12 margin10px0">
+                        <h3 class="text-warning">精彩影片</h3>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe src="https://www.youtube.com/embed/l1cuxU2zdaE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe src="https://www.youtube.com/embed/RvzJsl4smgc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe src="https://www.youtube.com/embed/U4lT_4peo4w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe src="https://www.youtube.com/embed/xRX2yDQdlTM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

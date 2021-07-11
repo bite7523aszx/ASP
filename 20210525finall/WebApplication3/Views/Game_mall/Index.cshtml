@@ -1,0 +1,59 @@
+﻿@model IEnumerable<WebApplication3.Models.Game_mall>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_Layout";
+}
+
+<p class=" container text-center">
+    <a asp-action="Create">新增遊戲</a>
+</p>
+<table class="table container text-center" >
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Game_number)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Game_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Game_category)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Unit_price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Listing_date)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Game_number)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Game_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Game_category)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Unit_price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Listing_date)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Game_number">修改</a> |
+                    <a asp-action="Details" asp-route-id="@item.Game_number">明細</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Game_number">刪除</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

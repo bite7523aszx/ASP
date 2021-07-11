@@ -1,0 +1,111 @@
+﻿@model WebApplication3.ViewModel.Game_mallCommentViewModel
+
+<section id="Game_Story_Comment">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
+                <div class="container">
+                    <dl class="dl-horizontal">
+                        <dt class="text-warning">
+                            <h2></h2>
+                        </dt>
+                        <dd>
+                            <div class="commentBox">
+                                @using (Html.BeginForm("Add", "Game_mallComments", FormMethod.Post, new { onsubmit = "return SubmitComment()" }))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    <div class="form-horizontal">
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label">
+                                                給予評價 <span style="font-weight:normal;">( 一 至 五 顆 星 )</span>
+                                            </label>
+                                            <div class="col-md-7">
+                                                <div onmouseout="CRateSelected()">
+                                                    <span class="starFade" id="Rate1" onclick="CRate(1)" onmouseover="CRateOver(1)" onmouseout="CRateOut(1)"></span>
+                                                    <span class="starFade" id="Rate2" onclick="CRate(2)" onmouseover="CRateOver(2)" onmouseout="CRateOut(2)"></span>
+                                                    <span class="starFade" id="Rate3" onclick="CRate(3)" onmouseover="CRateOver(3)" onmouseout="CRateOut(3)"></span>
+                                                    <span class="starFade" id="Rate4" onclick="CRate(4)" onmouseover="CRateOver(4)" onmouseout="CRateOut(4)"></span>
+                                                    <span class="starFade" id="Rate5" onclick="CRate(5)" onmouseover="CRateOver(5)" onmouseout="CRateOut(5)"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <textarea id="textarea" asp-for="Comment" required rows="5" style="width:100%;" class="form-control"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <input type="hidden" asp-for="Comment_Game_number" />
+                                            <input type="hidden" name="Rating" id="Rating" value="0" />
+                                            <input type="submit" id="btnRegister" name="btnRegister" value="送出評價" class="btn btn-warning" />
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    function SubmitComment() {
+        if ($("#Rating").val() == 0) {
+            alert("Please rate this service provider.");
+            return false;
+        }
+
+        else {
+            return true;
+        }
+    }
+
+    function CRate(r) {
+        $("#Rating").val(r);
+        for (var i = 1; i <= r; i++) {
+            $("#Rate" + i).attr('class', 'starGlow');
+        }
+        // unselect remaining
+        for (var i = r + 1; i <= 5; i++) {
+            $("#Rate" + i).attr('class', 'starFade');
+        }
+    }
+
+    function CRateOver(r) {
+        for (var i = 1; i <= r; i++) {
+            $("#Rate" + i).attr('class', 'starGlow');
+        }
+    }
+
+    function CRateOut(r) {
+        for (var i = 1; i <= r; i++) {
+            $("#Rate" + i).attr('class', 'starFade');
+        }
+    }
+
+    function CRateSelected() {
+        var setRating = $('#Rating').val();
+        for (var i = 1; i <= setRating; i++) {
+            $("#Rate" + i).attr('class', 'starGlow');
+        }
+    }
+
+</script>
+
+<script>
+
+    SCRate();
+    function SCRate() {
+        for (let i = 1; i <= 4; i++) {
+            console.log(i);
+            console.log(j);
+            let str = `"#sRate${i}"`;
+            console.log(str)
+            //$(str).attr('class', 'starGlowN');
+            $(str).addClass("starGlowN");
+        }
+    }
+</script>

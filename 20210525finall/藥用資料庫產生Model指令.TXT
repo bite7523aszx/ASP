@@ -1,0 +1,1 @@
+Scaffold-DbContext "Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\User\Desktop\WebApplication2\WebApplication2\App_data\NORTHWND.MDF;Integrated Security=True" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -Context NorthwindDbContext -force -DataAnnotation

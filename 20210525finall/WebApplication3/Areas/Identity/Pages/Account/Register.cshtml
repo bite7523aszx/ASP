@@ -1,0 +1,60 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+    Layout = "_AuthLayout.cshtml";
+}
+
+<style>
+    .form-control {
+        border: solid;
+        padding: 15px 20px;
+        border-radius: 25px;
+        width: 100%;
+    }
+</style>
+<div class="container text-center">
+    <img src="~/img/Game_index/register.png" />
+    <div class="row">
+        <div class="col-md-10 col-lg-10 container">
+            <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Input.Email"></label>
+                    <div class="input-group">
+                        <div class="input-group-text">
+                            <img src="~/img/Game_index/email.png" />
+                        </div>
+                        <input asp-for="Input.Email" autofocus class="form-control " placeholder="輸入電子郵件" />
+                    </div>
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Input.Password"></label>
+                    <div class="input-group">
+                        <div class="input-group-text">
+                            <img src="~/img/Game_index/padlock.png" />
+                        </div>
+                        <input asp-for="Input.Password" class="form-control " placeholder="輸入密碼" />
+                    </div>
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Input.ConfirmPassword"></label>
+                    <div class="input-group">
+                        <div class="input-group-text">
+                            <img src="~/img/Game_index/padlock.png" />
+                        </div>
+                        <input asp-for="Input.ConfirmPassword" class="form-control" placeholder="確認密碼" />
+                    </div>
+                    <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                </div>
+                <button type="submit" class="btn btn-primary">註冊</button>
+            </form>
+        </div>
+
+    </div>
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

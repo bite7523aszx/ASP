@@ -1,0 +1,228 @@
+﻿@model IEnumerable<WebApplication3.Models.Game_mall>
+@{
+    ViewData["Title"] = "Game_Story14";
+    Layout = "Game_index";
+    string Game_Story_sec2_1 = "60 FPS @ 1280x720";
+    string Game_Story_sec2_2 = "60 FPS @ 1920x1080";
+}
+@foreach (var item in Model)
+{
+    if (item.Game_number == 14)
+    {
+        <section id="Game_Story_title">
+            <div class="container text-warning">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="row container">
+                            <div class="col-md-12">
+                                <h1>@Html.DisplayFor(modelItem => item.Game_name)</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="Game_Story_imgmax">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="col-md-12">
+                            <div class="swiper-container gallery-top">
+                                <div class="swiper-wrapper">
+                                    @for (int i = 1; i <= 8; i++)
+                                    {
+                                        string img = $"Game_Story14-{i}.png";
+                                        <div class="swiper-slide"><img src="~/img/Game_Story/Game_Story14/@img"></div>
+                                    }
+                                </div>
+                                <!-- Add Arrows -->
+                                <div class="swiper-button-next swiper-button-white swiper-opacity"></div>
+                                <div class="swiper-button-prev swiper-button-white swiper-opacity"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="Game_Story_imgmin">
+            <div class="container ">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="col-md-12">
+                            <div class="swiper-container gallery-thumbs">
+                                <div class="swiper-wrapper">
+                                    @for (int i = 1; i <= 8; i++)
+                                    {
+                                        string img = $"Game_Story14-{i}.png";
+                                        <div class="swiper-slide"><img src="~/img/Game_Story/Game_Story14/@img"></div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Initialize Swiper -->
+        <script>
+            var galleryThumbs = new Swiper('.gallery-thumbs', {
+                spaceBetween: 8,
+                slidesPerView: 3,
+                loop: true,
+                freeMode: true,
+                loopedSlides: 4, //looped slides should be the same
+                watchSlidesVisibility: true,
+                watchSlidesProgress: true,
+            });
+            var galleryTop = new Swiper('.gallery-top', {
+                spaceBetween: 8,
+                loop: true,
+                loopedSlides: 4, //looped slides should be the same
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                thumbs: {
+                    swiper: galleryThumbs,
+                },
+            });
+        </script>
+        <section id="Game_Story_sec1">
+            <div class="container text-white">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="row container">
+                            <div class="col-md-8 margin10px0">
+                                <h3 class="text-warning">遊戲介紹</h3>
+                                <h5>《NieR Replicant ver.1.22474487139...》是以2010年4月發售的《NieR Replicant》為基礎製作的強化版，描寫2017年2月發售的《NieR:Automata》當中的世界是如何形成的故事。</h5>
+                            </div>
+                            <div class="col-md-4 margin10px0">
+                                <video autoplay muted loop id="Game_Story_mp4" class="margin10px0">
+                                    <source src="~/img/Game_Story/Game_Story14/Game_Story14-1.mp4" />
+                                    您的瀏覽器不支援此影音播放模式!
+                                </video>
+                                <h6>遊戲類型：@Html.DisplayFor(modelItem => item.Game_category)</h6>
+                                <h6>發行日期：@Html.DisplayFor(modelItem => item.Listing_date)</h6>
+                            </div>
+                            <div class="row h3_color margin10px0" style="width:100%">
+                                <div class="col-md-8">
+                                    <h3>購買：@Html.DisplayFor(modelItem => item.Game_name)</h3>
+                                </div>
+                                <div class="col-md-4">
+                                    <span>@Html.DisplayFor(modelItem => item.Unit_price)</span>
+                                    <form asp-controller="cart" asp-action="stroyaddcart">
+
+                                        <input type="hidden" name="Game_number" value="@item.Game_number">
+                                        <div>
+                                            <input placeholder="購買數量" name="quantity" value="" style="width:100px">
+                                            <button type="submit" style="border: none" data-placement="bottom" data-toggle="popover" data-trigger="hover" title="購物車" data-content="點擊圖片加入購物車">
+                                                <img src="~/img/Game_index/cart.png" />
+                                            </button>
+                                        </div>
+                                    </form>
+                                    <a class="btn btn-success" asp-controller="Cart" asp-action="Buy" asp-route-id="@item.Game_number">直接購買</a>
+                                </div>
+                            </div>
+                            <div class="col-md-12 margin10px0">
+                                <h3 class="text-warning">關於此遊戲</h3>
+                                <p><img src="~/img/Game_Story/Game_Story14/Game_Story14-9.png" class="margin10px0"></p><br>
+                                <h6>久遠的約定。千年的謊言。</h6><br>
+                                <h6>《NieR Replicant ver.1.22474487139...》是以2010年4月發售的《NieR Replicant》為基礎製作的強化版，描寫2017年2月發售的《NieR:Automata》當中的世界是如何形成的故事。</h6>
+                                <h6>主角是一位住在邊境村莊的善良少年，他為了拯救罹患不治之症「黑文病」的妹妹「悠娜」，與會說人話的神秘書本「白書」一起踏上旅程，找尋治療妹妹的最後一線希望──「被封印的話語」。</h6><br>
+                                <p><img src="~/img/Game_Story/Game_Story14/Game_Story14-10.png" class="margin10px0"></p>
+                                <h6>故事發生在非常、非常遙遠的未來。</h6>
+                                <h6>人類即將滅亡，</h6>
+                                <h6>世界受到黑色疾病與</h6>
+                                <h6>異形怪物的威脅。</h6><br>
+                                <h6>善良的少年，</h6>
+                                <h6>與年幼的妹妹立下約定。</h6><br>
+                                <h6>那是橫跨千年歲月、近乎永恆的謊言。</h6><br>
+                                <p><img src="~/img/Game_Story/Game_Story14/Game_Story14-11.png" class="margin10px0"></p>
+                                <ul>
+                                    <li>探究隱藏在NieR世界背後的真相，了解這段虛幻又令人鼻酸的故事。</li>
+                                    <br>
+                                    <li>與意想不到的夥伴在疾病蔓延、魔物肆虐的荒廢世界中旅行。</li>
+                                    <br>
+                                    <li>重新錄製極富魅力、具象徵性的遊戲配樂。</li>
+                                    <br>
+                                    <li>以具備獨特性能的各種武器與強大魔法，和恐怖的敵人戰鬥。</li>
+                                    <br>
+                                    <li>用文字的力量來自訂角色的魔法、技能與武器。</li>
+                                    <br>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    }
+}
+<section id="Game_Story_sec2">
+    <div class="container text-white">
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
+                <div class="col-md-12 margin10px0">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active text-info" data-toggle="tab" href="#Windows">Windows</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="Windows">
+                            <div class="row">
+                                <div class="col-md-6 margin10px0">
+                                    <h6>最低配備: 需要 64 位元的處理器及作業系統</h6>
+                                    <h6>作業系統: Windows® 10 64-bit</h6>
+                                    <h6>處理器: AMD Ryzen™ 3 1300X; Intel® Core™ i5-6400</h6>
+                                    <h6>記憶體: 8 GB 記憶體</h6>
+                                    <h6>顯示卡: AMD Radeon™ R9 270X; NVIDIA® GeForce® GTX 960</h6>
+                                    <h6>DirectX: 版本：11</h6>
+                                    <h6>儲存空間: 26 GB 可用空間</h6>
+                                    <h6>DirectX Compatible Sound Card</h6>
+                                    <h6>備註: @Game_Story_sec2_1</h6>
+                                </div>
+                                <div class="col-md-6 margin10px0">
+                                    <h6>建議配備: 需要 64 位元的處理器及作業系統</h6>
+                                    <h6>作業系統: Windows® 10 64-bit</h6>
+                                    <h6>處理器: AMD Ryzen™ 3 1300X; Intel® Core™ i5-6400</h6>
+                                    <h6>記憶體: 16 GB 記憶體</h6>
+                                    <h6>顯示卡: AMD Radeon™ RX Vega 56; NVIDIA® GeForce® GTX 1660</h6>
+                                    <h6>DirectX: 版本：11</h6>
+                                    <h6>儲存空間: 26 GB 可用空間</h6>
+                                    <h6>DirectX Compatible Sound Card</h6>
+                                    <h6>備註: @Game_Story_sec2_2</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="Game_Story_sec3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
+                <div class="row container">
+                    <div class="col-md-12 margin10px0">
+                        <h3 class="text-warning">精彩影片</h3>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe src="https://www.youtube.com/embed/hLjCapd48Lw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe src="https://www.youtube.com/embed/ywS8Bn4c9fM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe src="https://www.youtube.com/embed/_mjzRks5tZA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe src="https://www.youtube.com/embed/sPcf4pfTqfY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

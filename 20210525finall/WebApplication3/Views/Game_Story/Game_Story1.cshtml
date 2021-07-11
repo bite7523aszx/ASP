@@ -1,0 +1,256 @@
+﻿@model IEnumerable<WebApplication3.Models.Game_mall>
+@{
+    ViewData["Title"] = "Game_Story1";
+    Layout = "game_index";
+    string Game_Story_sec2_1 = "處理器: Intel Core i5 - 2400 @ 3.1 GHz or AMD FX-6300 @ 3.5 GHz or equivalent";
+    string Game_Story_sec2_2 = "處理器: Intel Core i7-4770 @ 3.4 GHz or AMD Ryzen 5 1600 @ 3.2 GHz or equivalent";
+
+
+}
+@foreach (var item in Model)
+{
+    if (item.Game_number == 1)
+    {
+        <section id="Game_Story_title">
+            <div class="container text-warning">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="row container">
+                            <div class="col-md-12">
+                                <h1>@Html.DisplayFor(modelItem => item.Game_name)</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="Game_Story_imgmax">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="col-md-12">
+                            <div class="swiper-container gallery-top">
+                                <div class="swiper-wrapper">
+                                    @for (int i = 1; i <= 8; i++)
+                                    {
+                                        string img = $"Game_Story1-{i}.png";
+                                        <div class="swiper-slide"><img src="~/img/Game_Story/Game_Story1/@img"></div>
+                                    }
+                                </div>
+                                <!-- Add Arrows -->
+                                <div class="swiper-button-next swiper-button-white swiper-opacity"></div>
+                                <div class="swiper-button-prev swiper-button-white swiper-opacity"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="Game_Story_imgmin">
+            <div class="container ">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="col-md-12">
+                            <div class="swiper-container gallery-thumbs">
+                                <div class="swiper-wrapper">
+                                    @for (int i = 1; i <= 8; i++)
+                                    {
+                                        string img = $"Game_Story1-{i}.png";
+                                        <div class="swiper-slide"><img src="~/img/Game_Story/Game_Story1/@img"></div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Initialize Swiper -->
+        <script>
+            var galleryThumbs = new Swiper('.gallery-thumbs', {
+                spaceBetween: 8,
+                slidesPerView: 3,
+                loop: true,
+                freeMode: true,
+                loopedSlides: 4, //looped slides should be the same
+                watchSlidesVisibility: true,
+                watchSlidesProgress: true,
+            });
+            var galleryTop = new Swiper('.gallery-top', {
+                spaceBetween: 8,
+                loop: true,
+                loopedSlides: 4, //looped slides should be the same
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                thumbs: {
+                    swiper: galleryThumbs,
+                },
+            });
+        </script>
+        <section id="Game_Story_sec1">
+            <div class="container text-white">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="row container">
+                            <div class="col-md-8 margin10px0">
+                                <h3 class="text-warning">遊戲介紹</h3>
+                                <h5>Be the leader of wobblers from ancient lands, spooky places, and fantasy worlds. Watch them fight in simulations made with the wobbliest physics system ever created, make your own wobblers in the unit creator and send your army off to fight your friends in multiplayer.</h5>
+                            </div>
+                            <div class="col-md-4 margin10px0">
+                                <video autoplay muted loop id="Game_Story_mp4" class="margin10px0">
+                                    <source src="~/img/Game_Story/Game_Story1/Game_Story1-1.mp4" />
+                                    您的瀏覽器不支援此影音播放模式!
+                                </video>
+                                <h6>遊戲類型：@Html.DisplayFor(modelItem => item.Game_category)</h6>
+                                <h6>發行日期：@Html.DisplayFor(modelItem => item.Listing_date)</h6>
+                            </div>
+                            <div class="row h3_color margin10px0" style="width:100%">
+                                <div class="col-md-8">
+                                    <h3>購買：@Html.DisplayFor(modelItem => item.Game_name)</h3>
+                                </div>
+                                <div class="col-md-4">
+                                    <span>@Html.DisplayFor(modelItem => item.Unit_price)</span>
+                                    <form asp-controller="cart" asp-action="stroyaddcart">
+
+                                        <input type="hidden" name="Game_number" value="@item.Game_number">
+                                        <div>
+                                            <input placeholder="購買數量" name="quantity" value="" style="width:100px">
+                                            <button type="submit" style="border: none" data-placement="bottom" data-toggle="popover" data-trigger="hover" title="購物車" data-content="點擊圖片加入購物車">
+                                                <img src="~/img/Game_index/cart.png" />
+                                            </button>
+                                           
+                                        </div>
+                                    </form>
+                                    <a class="btn btn-success" asp-controller="Cart" asp-action="Buy" asp-route-id="@item.Game_number">直接購買</a>
+                                </div>
+                            </div>
+                            <div class="col-md-12 margin10px0">
+                                <h3 class="text-warning">關於此遊戲</h3>
+                                <img src="~/img/Game_Story/Game_Story1/Game_Story1-1.gif" class="margin10px0">
+                                <h6>Be the leader of red and blue wobblers from ancient lands, spooky places, and fantasy worlds. Watch them fight in simulations made with the wobbliest physics system ever created.</h6>
+                                <h6>When you grow tired of the 100+ wobblers at your disposal you can make new ones in the unit creator.</h6>
+                                <h6>You can also send wobblers to fight your friends or strangers in online multiplayer!</h6>
+                            </div>
+                            <div class="col-md-12">
+                                <img src="~/img/Game_Story/Game_Story1/Game_Story1-2.gif" class="margin10px0">
+                                <h6>Features:</h6>
+                                <ul>
+                                    <li>Campaigns</li>
+                                    <li>Multiplayer</li>
+                                    <li>Workshop</li>
+                                    <li>Unit and faction Creator</li>
+                                    <li>Campaign and battle creator</li>
+                                    <li>Sandbox mode</li>
+                                    <li>Unit Possession</li>
+                                    <li>A bunch of silly units</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-12">
+                                <img src="~/img/Game_Story/Game_Story1/Game_Story1-3.gif" class="margin10px0">
+                                <h6>Custom content and workshop:</h6>
+                                <ul>
+                                    <li>Unit and faction Creator</li>
+                                    <li>Campaign and battle creator</li>
+                                    <li>In-game workshop</li>
+                                </ul>
+                                <img src="~/img/Game_Story/Game_Story1/Game_Story1-4.gif" class="margin10px0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    }
+}
+<section id="Game_Story_sec2">
+    <div class="container text-white">
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
+                <div class="col-md-12 margin10px0">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active text-info" data-toggle="tab" href="#Windows">Windows</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-info" data-toggle="tab" href="#Mac_OS_X">Mac OS X</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="Windows">
+                            <div class="row">
+                                <div class="col-md-6 margin10px0">
+                                    <h6>最低配備: 需要 64 位元的處理器及作業系統</h6>
+                                    <h6>作業系統: Windows 7</h6>
+                                    <h6>@Game_Story_sec2_1</h6>
+                                    <h6>記憶體: 8 GB 記憶體</h6>
+                                    <h6>顯示卡: NVIDIA GeForce GTX 670 or AMD R9 270 (2GB VRAM with Shader Model 5.0 or better)</h6>
+                                    <h6>DirectX: 版本：10</h6>
+                                    <h6>儲存空間: 4 GB 可用空間</h6>
+                                    <h6>備註: Only runs on 64 bit systems</h6>
+                                </div>
+                                <div class="col-md-6 margin10px0">
+                                    <h6>建議配備: 需要 64 位元的處理器及作業系統</h6>
+                                    <h6>作業系統: Win 10</h6>
+                                    <h6>@Game_Story_sec2_2</h6>
+                                    <h6>記憶體: 8 GB 記憶體</h6>
+                                    <h6>顯示卡: NVIDIA GeForce GTX 970 or AMD R9 290X (4GB VRAM with Shader Model 5.0 or better)</h6>
+                                    <h6>DirectX: 版本：11</h6>
+                                    <h6>儲存空間: 6 GB 可用空間</h6>
+                                    <h6>備註: Only runs on 64 bit systems</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="Mac_OS_X">
+                            <div class="row">
+                                <div class="col-md-6 margin10px0">
+                                    <h6>最低配備: 需要 64 位元的處理器及作業系統</h6>
+                                    <h6>作業系統: macOS Mojave</h6>
+                                    <h6>處理器: 2.3GHz dual-core Intel Core i5</h6>
+                                    <h6>記憶體: 8 GB 記憶體</h6>
+                                    <h6>顯示卡: Intel Iris Plus Graphics 640</h6>
+                                    <h6>儲存空間: 3 GB 可用空間</h6>
+                                    <h6>備註: Mac book pro 2018 or later</h6>
+                                </div>
+                                <div class="col-md-6 margin10px0">
+                                    <h6>建議配備: 需要 64 位元的處理器及作業系統</h6>
+                                    <h6>作業系統: macOS Mojave</h6>
+                                    <h6>處理器: 2.9GHz 6-core Intel Core i9</h6>
+                                    <h6>記憶體: 8 GB 記憶體</h6>
+                                    <h6>顯示卡: Radeon Pro 560X</h6>
+                                    <h6>儲存空間: 3 GB 可用空間</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="Game_Story_sec3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
+                <div class="row container">
+                    <div class="col-md-12 margin10px0">
+                        <h3 class="text-warning">精彩影片</h3>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe src="https://www.youtube.com/embed/O4oSjbFnJ6E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe src="https://www.youtube.com/embed/_0fZyhGHjhI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe src="https://www.youtube.com/embed/Ul-I64yPpsA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe src="https://www.youtube.com/embed/h64EnpsIvys" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

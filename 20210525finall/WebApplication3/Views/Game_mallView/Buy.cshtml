@@ -1,0 +1,60 @@
+﻿@model WebApplication3.Models.shopping
+
+@{
+    ViewData["Title"] = "Buy";
+    Layout = "_Layout";
+    var user = UserManager.GetUserName(User);
+    shopping a = new shopping();
+    a.Email = user;
+}
+@using Microsoft.AspNetCore.Identity
+@using WebApplication3.Areas.Identity.Data
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<h1>Buy</h1>
+
+<h4>shopping</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Buy">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="control-label">
+                <span asp-validation-for="Game_name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Game_name" class="control-label"></label>
+                <input asp-for="Game_name" class="form-control" value="@user"/>
+                <span asp-validation-for="Game_name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Game_category" class="control-label"></label>
+                <input asp-for="Game_category" class="form-control" />
+                <span asp-validation-for="Game_category" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Unit_price" class="control-label"></label>
+                <input asp-for="Unit_price" class="form-control" />
+                <span asp-validation-for="Unit_price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="quantity" class="control-label"></label>
+                <input asp-for="quantity" class="form-control" />
+                <span asp-validation-for="quantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

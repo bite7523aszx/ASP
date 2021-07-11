@@ -1,0 +1,42 @@
+﻿@model IEnumerable<WebApplication3.Models.Game_mall>
+    @{
+        Layout = "game_index";
+    }
+
+    <!DOCTYPE html>
+
+    <html>
+    <head>
+        <title>Index</title>
+    </head>
+    <body>
+        <table class="table text-white">
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    if (item.Game_number == 1)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItemp => item.Game_number)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Game_name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Game_category)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Unit_price)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Listing_date)
+                            </td>
+                        </tr>
+
+                    }
+                }
+            </tbody>
+        </table>
+    </body>
+</html>

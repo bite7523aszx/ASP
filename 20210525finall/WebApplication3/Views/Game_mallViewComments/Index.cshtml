@@ -1,0 +1,54 @@
+﻿@model IEnumerable<WebApplication3.Models.Game_mall>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Game_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Game_category)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Unit_price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Listing_date)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Game_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Game_category)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Unit_price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Listing_date)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Game_number">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Game_number">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Game_number">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

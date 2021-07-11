@@ -1,0 +1,217 @@
+﻿@model IEnumerable<WebApplication3.Models.Game_mall>
+@{
+    ViewData["Title"] = "Game_Story21";
+    Layout = "Game_index";
+}
+@foreach (var item in Model)
+{
+    if (item.Game_number == 21)
+    {
+        <section id="Game_Story_title">
+            <div class="container text-warning">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="row container">
+                            <div class="col-md-12">
+                                <h1>@Html.DisplayFor(modelItem => item.Game_name)</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="Game_Story_imgmax">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="col-md-12">
+                            <div class="swiper-container gallery-top">
+                                <div class="swiper-wrapper">
+                                    @for (int i = 1; i <= 8; i++)
+                                    {
+                                        string img = $"Game_Story21-{i}.png";
+                                        <div class="swiper-slide"><img src="~/img/Game_Story/Game_Story21/@img"></div>
+                                    }
+                                </div>
+                                <!-- Add Arrows -->
+                                <div class="swiper-button-next swiper-button-white swiper-opacity"></div>
+                                <div class="swiper-button-prev swiper-button-white swiper-opacity"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="Game_Story_imgmin">
+            <div class="container ">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="col-md-12">
+                            <div class="swiper-container gallery-thumbs">
+                                <div class="swiper-wrapper">
+                                    @for (int i = 1; i <= 8; i++)
+                                    {
+                                        string img = $"Game_Story21-{i}.png";
+                                        <div class="swiper-slide"><img src="~/img/Game_Story/Game_Story21/@img"></div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Initialize Swiper -->
+        <script>
+            var galleryThumbs = new Swiper('.gallery-thumbs', {
+                spaceBetween: 8,
+                slidesPerView: 3,
+                loop: true,
+                freeMode: true,
+                loopedSlides: 4, //looped slides should be the same
+                watchSlidesVisibility: true,
+                watchSlidesProgress: true,
+            });
+            var galleryTop = new Swiper('.gallery-top', {
+                spaceBetween: 8,
+                loop: true,
+                loopedSlides: 4, //looped slides should be the same
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                thumbs: {
+                    swiper: galleryThumbs,
+                },
+            });
+        </script>
+        <section id="Game_Story_sec1">
+            <div class="container text-white">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="row container">
+                            <div class="col-md-8 margin10px0">
+                                <h3 class="text-warning">遊戲介紹</h3>
+                                <h5>Foundation 是一款強調有機發展、地標建造和資源管理的無網格不規則建設的中世紀城市建造模擬遊戲。</h5>
+                            </div>
+                            <div class="col-md-4 margin10px0">
+                                <video autoplay muted loop id="Game_Story_mp4" class="margin10px0">
+                                    <source src="~/img/Game_Story/Game_Story21/Game_Story21-1.mp4" />
+                                    您的瀏覽器不支援此影音播放模式!
+                                </video>
+                                <h6>遊戲類型：@Html.DisplayFor(modelItem => item.Game_category)</h6>
+                                <h6>發行日期：@Html.DisplayFor(modelItem => item.Listing_date)</h6>
+                            </div>
+                            <div class="row h3_color margin10px0" style="width:100%">
+                                <div class="col-md-8">
+                                    <h3>購買：@Html.DisplayFor(modelItem => item.Game_name)</h3>
+                                </div>
+                                <div class="col-md-4">
+                                    <span>@Html.DisplayFor(modelItem => item.Unit_price)</span>
+                                    <form asp-controller="cart" asp-action="stroyaddcart">
+
+                                        <input type="hidden" name="Game_number" value="@item.Game_number">
+                                        <div>
+                                            <input placeholder="購買數量" name="quantity" value="" style="width:100px">
+                                            <button type="submit" style="border: none" data-placement="bottom" data-toggle="popover" data-trigger="hover" title="購物車" data-content="點擊圖片加入購物車">
+                                                <img src="~/img/Game_index/cart.png" />
+                                            </button>
+                                        </div>
+                                    </form>
+                                    <a class="btn btn-success" asp-controller="Cart" asp-action="Buy" asp-route-id="@item.Game_number">直接購買</a>
+                                </div>
+                            </div>
+                            <div class="col-md-12 margin10px0">
+                                <h3 class="text-warning">關於此遊戲</h3>
+                                <h6>本頁面由社群協助翻譯！</h6><br>
+                                <h6>FOUNDATION：有機模擬城市建造新紀元！</h6>
+                                <h6>Foundation 是一款強調有機發展、地標建造和資源管理的無網格不規則建設的中世紀城市建造模擬遊戲</h6><br>
+                                <h6>
+                                    在這款策略、城市建造、經濟模擬遊戲中，玩家作為一個剛受任命的領主，必須在完全未開發的土地上建立一個繁榮的領地。
+                                </h6><br>
+                                <p><img src="~/img/Game_Story/Game_Story21/Game_Story21-1.gif" class="margin10px0"></p><br>
+                                <h6>以重新定義城市建造類遊戲為目標，Foundation 使用 Polymorph Games 的專利遊戲引擎 -</h6>
+                                <h6>
+                                    Hurricane - 著重在舊時城市生活的有機發展面向。該遊戲引擎有著完整的模組支援以及對隨著建造巨型城市而來的上萬動態物件的最佳化。
+                                </h6><br>
+                                <h6>除此之外，該引擎還提供玩家強大的建設工具，能建造出無數獨一無二的地標建物，並且完美融入你的領地。</h6><br>
+                                <h6>以中世紀建築與城市生活爲設計核心，Foundation 的願景是讓玩家建設理想中甚至是真實重現的中世紀城市。</h6><br>
+                                <p><img src="~/img/Game_Story/Game_Story21/Game_Story21-9.png" class="margin10px0"></p><br>
+                                <h6>遊戲特色</h6>
+                                <h6>中世紀的有機城市生活： 和真實世界的中世紀城市一樣，不受網格限制、有機不規則發展的城市。</h6><br>
+                                <h6>奠基、成長、繁榮： 在居民需求、職業技能、物資使用，資源開採以及貨物生產之間交織互動。</h6><br>
+                                <h6>
+                                    獨一無二的地標建物建設工具 使用我們以節點為基礎的專利工具，打造設計出原創、型態自由的地標建物，像是修道院，教堂，領土莊園，城堡等等。
+                                </h6><br>
+                                <h6>為社群提供完整的模組支援： 透過我們的模組支援工具，分享角色，建物，任務甚至是地形，成為 Foundation 社群的一員。</h6><br>
+                                <h6>使用我們的專利遊戲引擎 - HURRICANE： 體驗來自我們無與倫比的想法，精心定制且獨力打造的遊戲引擎所驅動的城市建造遊戲。</h6><br>
+                                <h6>來自PARADOX資深作曲家的原創配樂： 令人沉浸忘我的背景音樂，來自曾為 十字軍之王 II和歐陸風雲 IV等遊戲創作的天才作曲家！</h6><br>
+                                <p><img src="~/img/Game_Story/Game_Story21/Game_Story21-10.png" class="margin10px0"></p><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    }
+}
+<section id="Game_Story_sec2">
+    <div class="container text-white">
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
+                <div class="col-md-12 margin10px0">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active text-info" data-toggle="tab" href="#Windows">Windows</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="Windows">
+                            <div class="row">
+                                <div class="col-md-6 margin10px0">
+                                    <h6>最低配備: 需要 64 位元的處理器及作業系統</h6>
+                                    <h6>作業系統: Windows 7 Service Pack 1 or newer (64 bit)</h6>
+                                    <h6>處理器: 3 GHz Dual Core Processor</h6>
+                                    <h6>記憶體: 4 GB 記憶體</h6>
+                                    <h6>顯示卡: GTX 660 / R7 370 - 3 GB Video Memory</h6>
+                                    <h6>備註: OpenGL 4.3</h6>
+                                </div>
+                                <div class="col-md-6 margin10px0">
+                                    <h6>建議配備:</h6>
+                                    <h6>作業系統: Windows 7 Service Pack 1 or newer (64 bit)</h6>
+                                    <h6>處理器: 3.2 GHz Quad Core Processor</h6>
+                                    <h6>記憶體: 8 GB 記憶體</h6>
+                                    <h6>顯示卡: GTX 1060</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+<section id="Game_Story_sec3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
+                <div class="row container">
+                    <div class="col-md-12 margin10px0">
+                        <h3 class="text-warning">精彩影片</h3>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe src="https://www.youtube.com/embed/Z--mlPB7ZMY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe src="https://www.youtube.com/embed/AJsoLuha1co" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe src="https://www.youtube.com/embed/yTs6_TlJkOU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe src="https://www.youtube.com/embed/xgbPSA94Rqg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

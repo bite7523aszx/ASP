@@ -1,0 +1,16 @@
+﻿@model WebApplication3.Models.Orderde
+@{
+    ViewData["Title"] = "check";
+    Layout = "~/Views/Shared/game_index.cshtml";
+}
+
+<h1>check</h1>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="check">
+            <div class="form-group">
+                <button class="btn btn-danger" type="submit" value="確認結帳" />
+            </div>
+        </form>
+    </div>
+</div>

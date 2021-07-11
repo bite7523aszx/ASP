@@ -1,0 +1,77 @@
+﻿@model WebApplication3.Models.SaveValue
+
+@using Microsoft.AspNetCore.Identity
+@using WebApplication3.Areas.Identity.Data
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@{
+    ViewData["Title"] = "Mycard";
+    Layout = "~/Views/Shared/game_index.cshtml";
+    var user = UserManager.GetUserName(User);
+    var userid = UserManager.GetUserId(User);
+    Layout = "game_index";
+    int a = 500;
+    int b = 1000;
+    int c = 2000;
+    int d = 2500;
+    int e = 3000;
+    int f = 5000;
+}
+
+<header>
+    <style>
+        /*form {
+            margin-top: 20px;
+        }*/
+
+        #div7 {
+            text-align: center
+        }
+        span{
+            color:white;
+        }
+    </style>
+
+</header>
+
+<form asp-action="Mycard">
+    <div id="div7" class="container-fluid">
+        <div class="row justify-content-center">
+
+            <div class="form-group  col-md-4" style=" text-align:center ">
+                <span> 500</span><input id="Mycard" type="radio" name="SavePointMethod" value="@a" />  <img src="~/img/savepoint/500.png" style="width:350px; height:250px ">
+            </div>
+            <div class="form-group col-md-4" style=" text-align:center ">
+                <span>1000</span><input type="radio" name="SavePointMethod" value="@b" />  <img src="~/img/savepoint/1000.png" style="width:350px; height:250px ">
+            </div>
+            <div class="form-group  col-md-4" style=" text-align:center ">
+                <span>2000</span><input id="Mycard" type="radio" name="SavePointMethod" value="@c" />  <img src="~/img/savepoint/2000.png" style="width:350px; height:250px ">
+            </div>
+            <div class="form-group col-md-4" style=" text-align:center ">
+                <span>2500</span><input type="radio" name="SavePointMethod" value="@d" />  <img src="~/img/savepoint/2500.png" style="width:350px; height:250px ">
+            </div>
+            <div class="form-group  col-md-4" style=" text-align:center ">
+                <span>3000</span><input id="Mycard" type="radio" name="SavePointMethod" value="@e" />  <img src="~/img/savepoint/3000.png" style="width:350px; height:250px ">
+            </div>
+            <div class="form-group col-md-4" style=" text-align:center ">
+                <span>5000</span><input type="radio" name="SavePointMethod" value="@f" />  <img src="~/img/savepoint/5000.png" style="width:350px; height:250px ">
+            </div>
+        </div>
+        <div class="form-group" style="text-align:center">
+            <input type="hidden" name="Email" value="@user" />
+            <input type="submit" value="儲值" class="btn btn-success" id="input1" />
+            <a class="btn btn-danger"asp-action="Index">回首頁</a>
+        </div>
+    </div>
+
+</form>
+<script type="text/javascript">
+    $("#input1").click(function() {
+    alert("您確定要儲值嗎?" );
+});
+</script>
+@*<div>
+    <a asp-action="Index">Back to List</a>
+</div>*@
+

@@ -1,0 +1,218 @@
+﻿@model IEnumerable<WebApplication3.Models.Game_mall>
+@{
+    ViewData["Title"] = "Game_Story28";
+    Layout = "Game_index";
+}
+@foreach (var item in Model)
+{
+    if (item.Game_number == 28)
+    {
+        <section id="Game_Story_title">
+            <div class="container text-warning">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="row container">
+                            <div class="col-md-12">
+                                <h1>@Html.DisplayFor(modelItem => item.Game_name)</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="Game_Story_imgmax">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="col-md-12">
+                            <div class="swiper-container gallery-top">
+                                <div class="swiper-wrapper">
+                                    @for (int i = 1; i <= 8; i++)
+                                    {
+                                        string img = $"Game_Story28-{i}.png";
+                                        <div class="swiper-slide"><img src="~/img/Game_Story/Game_Story28/@img"></div>
+                                    }
+                                </div>
+                                <!-- Add Arrows -->
+                                <div class="swiper-button-next swiper-button-white swiper-opacity"></div>
+                                <div class="swiper-button-prev swiper-button-white swiper-opacity"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="Game_Story_imgmin">
+            <div class="container ">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="col-md-12">
+                            <div class="swiper-container gallery-thumbs">
+                                <div class="swiper-wrapper">
+                                    @for (int i = 1; i <= 8; i++)
+                                    {
+                                        string img = $"Game_Story28-{i}.png";
+                                        <div class="swiper-slide"><img src="~/img/Game_Story/Game_Story28/@img"></div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Initialize Swiper -->
+        <script>
+            var galleryThumbs = new Swiper('.gallery-thumbs', {
+                spaceBetween: 8,
+                slidesPerView: 3,
+                loop: true,
+                freeMode: true,
+                loopedSlides: 4, //looped slides should be the same
+                watchSlidesVisibility: true,
+                watchSlidesProgress: true,
+            });
+            var galleryTop = new Swiper('.gallery-top', {
+                spaceBetween: 8,
+                loop: true,
+                loopedSlides: 4, //looped slides should be the same
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                thumbs: {
+                    swiper: galleryThumbs,
+                },
+            });
+        </script>
+        <section id="Game_Story_sec1">
+            <div class="container text-white">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="row container">
+                            <div class="col-md-8 margin10px0">
+                                <h3 class="text-warning">遊戲介紹</h3>
+                                <h5>一款能執行任何操作的動態軟體物理效果車輛模擬器。</h5>
+                            </div>
+                            <div class="col-md-4 margin10px0">
+                                <video autoplay muted loop id="Game_Story_mp4" class="margin10px0">
+                                    <source src="~/img/Game_Story/Game_Story28/Game_Story28-1.mp4" />
+                                    您的瀏覽器不支援此影音播放模式!
+                                </video>
+                                <h6>遊戲類型：@Html.DisplayFor(modelItem => item.Game_category)</h6>
+                                <h6>發行日期：@Html.DisplayFor(modelItem => item.Listing_date)</h6>
+                            </div>
+                            <div class="row h3_color margin10px0" style="width:100%">
+                                <div class="col-md-8">
+                                    <h3>購買：@Html.DisplayFor(modelItem => item.Game_name)</h3>
+                                </div>
+                                <div class="col-md-4">
+                                    <span>@Html.DisplayFor(modelItem => item.Unit_price)</span>
+                                    <form asp-controller="cart" asp-action="stroyaddcart">
+
+                                        <input type="hidden" name="Game_number" value="@item.Game_number">
+                                        <div>
+                                            <input placeholder="購買數量" name="quantity" value="" style="width:100px">
+                                            <button type="submit" style="border: none" data-placement="bottom" data-toggle="popover" data-trigger="hover" title="購物車" data-content="點擊圖片加入購物車">
+                                                <img src="~/img/Game_index/cart.png" />
+                                            </button>
+                                        </div>
+                                    </form>
+                                    <a class="btn btn-success" asp-controller="Cart" asp-action="Buy" asp-route-id="@item.Game_number">直接購買</a>
+                                </div>
+                            </div>
+                            <div class="col-md-12 margin10px0">
+                                <h3 class="text-warning">關於此遊戲</h3>
+                                <h6>BeamNG.drive 是一款幾乎擁有無限可能的寫實駕駛遊戲。我們的軟體物理引擎能即時模擬車輛的所有零件，實現栩栩如生的行為。憑藉多年的精心設計、透徹研究與經驗， BeamNG.drive 真實重現在現實世界駕駛的刺激感。</h6><br>
+                                <img src="~/img/Game_Story/Game_Story28/Game_Story28-9.png" class="margin10px0"><br>
+                                <h6>為什麼 BeamNG.drive 是最適合你的遊戲?</h6>
+                                <h6>軟體物理效果：BeamNG 的物理引擎整個遊戲的核心，能夠為你带来遊戲中所見過最精細、最真實的車輛模擬體驗。遊戲使用極為精確的損害模組，讓撞擊感受深刻入骨。</h6><br>
+                                <img src="~/img/Game_Story/Game_Story28/Game_Story28-1.gif" class="margin10px0"><br>
+                                <h6>車輛： BeamNG.drive 提供十多種精心琢磨、完全可自訂的車輛供你體驗。無論小汽車或大卡車，你都能調整所有可動部位，以創造各種你想要的駕駛體驗。輪胎、懸吊、引擎跟其他元素；一切都在你的掌控之中。</h6><br>
+                                <img src="~/img/Game_Story/Game_Story28/Game_Story28-2.gif" class="margin10px0"><br>
+                                <h6>環境：眾多新奇發現等著你開車上路。多達 12 種無盡蔓延又美麗的開放世界，遊戲方式選項提供了廣闊又多樣化的地形。透過熱帶林道、貧瘠沙漠、都市大道、擁擠的公路等更多環境測試你的全新車輛配置。</h6><br>
+                                <img src="~/img/Game_Story/Game_Story28/Game_Story28-3.gif" class="margin10px0"><br>
+                                <h6>更多特色</h6>
+                                <h6>遊戲模式：遊戲豐富程度遠遠超過普通的駕駛模擬器。遊戲方式選項包羅萬象，可以進行簡單的運送任務或是創造整張地圖測試新的汽車配置。</h6><br>
+                                <img src="~/img/Game_Story/Game_Story28/Game_Story28-10.png" class="margin10px0"><br>
+                                <ul>
+                                    <li>自在漫遊：討厭四處受限嗎？駕駛任何車輛前往你選擇的地點並且開始探索。實驗也是這個遊戲模式的重點，因為你能操縱各種物體與環境條件。試著提高風速面對挑戰，或是改變重力！</li>
+                                    <li>情境：BeamNG.drive 提供豐富情境滿足各種駕駛狂熱分子。你可以盡快完成貨車運送任務，或是在飛車追逐中把警方巡邏車拋在腦後。無論何種場面，逼真的物理引擎都能給你帶來沉浸式的體驗。</li>
+                                    <li>計時賽：選擇車輛、環境與路線，測試自己的能耐！磨練你的技巧並且跟自己比賽，突破最佳時間。</li>
+                                </ul>
+                                <h6>模組與社群內容：熱心玩家組成讓我們引以為豪的活躍社群、激發精采的交流，同時創造有趣的車輛搭配、地形與情境與眾人共享。BeamNG.drive 裡的模組功能強大，幾乎能讓你自訂並且微調任何事物。有了我們內置的世界編輯器，任何玩家都可以擁有非凡的遊戲體驗。</h6><br>
+                                <h6>Automation: 我們與 Automation - the car company tycoon game 遊戲連動，讓玩家能將自己的創作匯入 BeamNG.drive 之中。如果你擁有 Automation ，操作方法很簡單：設計自訂車輛跟引擎，量身訂作屬於自己的規格，選擇「匯出」選項並啟動 BeamNG.drive ，這樣就能在車輛清單中找到自己的最新作品！</h6><br>
+                                <h6>自由度：玩家自由度讓 BeamNG.drive 從其他汽車遊戲中脫穎而出。你幾乎能實現你所想到與汽車或卡車有關的所有玩法，並且觀賞最近乎真實的結果。藉由我們的軟體物理引擎與模組能力，你可以想到任何天馬行空的情境。重點不只是車輛，而是善用廣泛又能自由變化的開放世界，打造你所想像的駕駛體驗。結合獨領風騷的物理效果、無限可能的自訂條件與緊密連結的社群， BeamNG.drive 將是你所玩過最全面、最有趣的車輛模擬器。</h6><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    }
+}
+<section id="Game_Story_sec2">
+    <div class="container text-white">
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
+                <div class="col-md-12 margin10px0">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active text-info" data-toggle="tab" href="#Windows">Windows</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="Windows">
+                            <div class="row">
+                                <div class="col-md-6 margin10px0">
+                                    <h6>最低配備:</h6>
+                                    <h6>作業系統: Windows 7 Service Pack 1</h6>
+                                    <h6>處理器: AMD FX 6300 3.5Ghz / Intel Core i3-6300 3.8Ghz</h6>
+                                    <h6>記憶體: 8 GB 記憶體</h6>
+                                    <h6>顯示卡: Radeon HD 7750 / Nvidia GeForce GTX 550 Ti</h6>
+                                    <h6>DirectX: 版本：11</h6>
+                                    <h6>儲存空間: 18 GB 可用空間</h6>
+                                </div>
+                                <div class="col-md-6 margin10px0">
+                                    <h6>建議配備:</h6>
+                                    <h6>作業系統:  Windows 10 64 Bit</h6>
+                                    <h6>處理器: AMD Ryzen 7 1700 3.0Ghz / Intel Core i7-6700 3.4Ghz (or better)</h6>
+                                    <h6>記憶體: 16 GB 記憶體</h6>
+                                    <h6>顯示卡: AMD R9 290 / Nvidia GeForce GTX 970</h6>
+                                    <h6>DirectX: 版本：11</h6>
+                                    <h6>儲存空間: 20 GB 可用空間</h6>
+                                    <h6>備註: Recommended spec based on 1080p resolution. Installing game mods will increase required storage space. Gamepad recommended.</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="Game_Story_sec3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
+                <div class="row container">
+                    <div class="col-md-12 margin10px0">
+                        <h3 class="text-warning">精彩影片</h3>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe src="https://www.youtube.com/embed/iMubhLn7UpE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe src="https://www.youtube.com/embed/GbRdDqLtFAs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe src="https://www.youtube.com/embed/JlOj7MTj_Eg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe src="https://www.youtube.com/embed/nFHJHzMRAwI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

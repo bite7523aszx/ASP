@@ -1,0 +1,78 @@
+﻿@model IEnumerable<WebApplication3.Models.shopping>
+
+@{
+    ViewData["Title"] = "BuyList";
+    Layout = "_Layout";
+    var user = UserManager.GetUserName(User);
+    int price = 0;
+}
+
+
+
+
+@using Microsoft.AspNetCore.Identity
+@using WebApplication3.Areas.Identity.Data
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+<h1>BuyList</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+
+</p>
+    <table class="table">
+        <thead>
+            <tr>
+                
+                <th>
+                    User
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Game_name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Game_category)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Unit_price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.quantity)
+                </th>
+
+            </tr>
+        </thead>               
+   </table>
+
+    <form>
+        @foreach (var i in Model)
+        {
+        <div class="form-group row">
+            <div class="col-sm-2 ml-3">
+                <input asp-for="@i.Email" class="form-control" />
+            </div>
+            <div class="col-sm-2 ml-3">
+                <input asp-for="@i.Game_name" class="form-control" />
+            </div>
+            <div class="col-sm-2 ml-3">
+                <input asp-for="@i.Game_category" class="form-control" />
+            </div>
+            <div class="col-sm-2 ml-3">
+                <input asp-for="@i.Unit_price" class="form-control" />
+            </div>
+            <div class="col-sm-2 ml-3">
+                <input asp-for="@i.quantity" class="form-control" />
+            </div>
+        </div>
+           
+            
+
+        }
+        <div class="form-group">
+            <input type="submit" value="Buy" class="btn btn-primary" />
+        </div>
+
+    </form>
+            
+   

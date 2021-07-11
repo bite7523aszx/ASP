@@ -1,0 +1,118 @@
+#digimon .jumbotron {
+    height: 50vh;
+}
+
+#digimon h1 {
+    font-size: 60px;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+#digimon .container {
+    margin: 0;
+    top:60%;
+    position: relative;
+    -ms-transform:translateY(-50%) ;
+    transform:translateY(-50%);
+    
+}
+#first nav img
+{
+    height: 50;
+    width: 100;
+}
+
+#first li{
+    margin-left: 20px;
+    margin-right: 30px;
+}
+
+#two img{
+    height: 300px;
+    width: 300px;
+    border-radius: 100px;
+    margin-bottom: 50px;
+}
+#two {
+    padding: 80px;
+}
+
+#two h1{
+    margin-bottom: 80px;
+}
+#two p{
+    color: #707070;
+}
+
+img{
+    height:120px;
+    width:140px;
+}
+p {
+    padding: 0px;
+    margin: 0px;
+
+}
+div {
+   padding:10px;
+}
+
+#third .innertext{
+    position: absolute;
+    bottom:24px;
+    left: 15px;
+
+}
+
+ #third .upper{
+
+    position: relative;
+
+} 
+
+#third h6{
+
+    background-color: rgb(68, 141, 141);
+    color: aliceblue;
+    /* 字邊寬 */
+    font-weight: 800;
+    margin-top: 6px;
+}
+
+#third .innertext span{
+    /* 0.7透明度 */
+    background-color: rgb(94, 117, 117, 0.7);
+    color: aliceblue;
+    /* 字邊寬 */
+    font-weight: 800;
+    border-radius: 20px;
+    padding:6px 15px;
+}
+
+#third .lower h5{
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+/* 讓icon和文字分開一點 */
+#third .lower i{
+    margin-left: 10px;
+
+}
+#third .outer{
+    background: white;
+    box-shadow: 2px 2px 8px 0px ;
+
+}
+#third .lower{
+
+    padding:10px 15px;
+}
+#third a{
+    color:black;
+/* 刪掉所有a 超連結的屬性，就是自己重新定義 */
+}
+/* 滑過的時候會有底線，要刪掉> 把文字裝飾設為none */
+#third a:hover{
+    text-decoration:none;
+
+}

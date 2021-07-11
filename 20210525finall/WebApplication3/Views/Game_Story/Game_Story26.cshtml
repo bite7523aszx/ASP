@@ -1,0 +1,274 @@
+﻿@model IEnumerable<WebApplication3.Models.Game_mall>
+@{
+    ViewData["Title"] = "Game_Story26";
+    Layout = "Game_index";
+}
+@foreach (var item in Model)
+{
+    if (item.Game_number == 26)
+    {
+        <section id="Game_Story_title">
+            <div class="container text-warning">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="row container">
+                            <div class="col-md-12">
+                                <h1>@Html.DisplayFor(modelItem => item.Game_name)</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="Game_Story_imgmax">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="col-md-12">
+                            <div class="swiper-container gallery-top">
+                                <div class="swiper-wrapper">
+                                    @for (int i = 1; i <= 8; i++)
+                                    {
+                                        string img = $"Game_Story26-{i}.png";
+                                        <div class="swiper-slide"><img src="~/img/Game_Story/Game_Story26/@img"></div>
+                                    }
+                                </div>
+                                <!-- Add Arrows -->
+                                <div class="swiper-button-next swiper-button-white swiper-opacity"></div>
+                                <div class="swiper-button-prev swiper-button-white swiper-opacity"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="Game_Story_imgmin">
+            <div class="container ">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="col-md-12">
+                            <div class="swiper-container gallery-thumbs">
+                                <div class="swiper-wrapper">
+                                    @for (int i = 1; i <= 8; i++)
+                                    {
+                                        string img = $"Game_Story26-{i}.png";
+                                        <div class="swiper-slide"><img src="~/img/Game_Story/Game_Story26/@img"></div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Initialize Swiper -->
+        <script>
+            var galleryThumbs = new Swiper('.gallery-thumbs', {
+                spaceBetween: 8,
+                slidesPerView: 3,
+                loop: true,
+                freeMode: true,
+                loopedSlides: 4, //looped slides should be the same
+                watchSlidesVisibility: true,
+                watchSlidesProgress: true,
+            });
+            var galleryTop = new Swiper('.gallery-top', {
+                spaceBetween: 8,
+                loop: true,
+                loopedSlides: 4, //looped slides should be the same
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                thumbs: {
+                    swiper: galleryThumbs,
+                },
+            });
+        </script>
+        <section id="Game_Story_sec1">
+            <div class="container text-white">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="row container">
+                            <div class="col-md-8 margin10px0">
+                                <h3 class="text-warning">遊戲介紹</h3>
+                                <h5>當您的朋友在前面建造道路時，您要在後面駕駛著怪物卡車！開太慢的話，就會爆炸！沒錯，聽起來很混亂，尤其是在四人分屏的畫面中。</h5>
+                            </div>
+                            <div class="col-md-4 margin10px0">
+                                <video autoplay muted loop id="Game_Story_mp4" class="margin10px0">
+                                    <source src="~/img/Game_Story/Game_Story26/Game_Story26-1.mp4" />
+                                    您的瀏覽器不支援此影音播放模式!
+                                </video>
+                                <h6>遊戲類型：@Html.DisplayFor(modelItem => item.Game_category)</h6>
+                                <h6>發行日期：@Html.DisplayFor(modelItem => item.Listing_date)</h6>
+                            </div>
+                            <div class="row h3_color margin10px0" style="width:100%">
+                                <div class="col-md-8">
+                                    <h3>購買：@Html.DisplayFor(modelItem => item.Game_name)</h3>
+                                </div>
+                                <div class="col-md-4">
+                                    <span>@Html.DisplayFor(modelItem => item.Unit_price)</span>
+                                    <form asp-controller="cart" asp-action="stroyaddcart">
+
+                                        <input type="hidden" name="Game_number" value="@item.Game_number">
+                                        <div>
+                                            <input placeholder="購買數量" name="quantity" value="" style="width:100px">
+                                            <button type="submit" style="border: none" data-placement="bottom" data-toggle="popover" data-trigger="hover" title="購物車" data-content="點擊圖片加入購物車">
+                                                <img src="~/img/Game_index/cart.png" />
+                                            </button>
+                                        </div>
+                                    </form>
+                                    <a class="btn btn-success" asp-controller="Cart" asp-action="Buy" asp-route-id="@item.Game_number">直接購買</a>
+                                </div>
+                            </div>
+                            <div class="col-md-12 margin10px0">
+                                <h3 class="text-warning">關於此遊戲</h3>
+                                <img src="~/img/Game_Story/Game_Story26/Game_Story26-1.gif" class="margin10px0"><br>
+                                <h6>不能做什麼？</h6>
+                                <h6>Can't Drive This是一款競爭性合作（很重要）的多人賽車遊戲。當您的朋友在前面建造道路時，您同時要跟在後面駕駛著您的怪物卡車！哦，別開得太慢，否則您會爆炸的！就像珊卓·布拉克主演的那部電影一樣，她在公車上也是做同樣的事情，只不過她沒有爆炸（爆雷預警）。還有，基努·李維也主演了該部電影。</h6><br>
+                                <img src="~/img/Game_Story/Game_Story26/Game_Story26-2.gif" class="margin10px0"><br>
+                                <h6>多人合作</h6>
+                                <ul>
+                                    <li>與您最好的朋友一起玩本機游戲！揪一些朋友和一些控制器來一起破壞您們的友誼吧！（我們或許會，但不承擔您的任何人際關係損害的責任。）</li>
+                                    <li>
+                                        如果沒有朋友的話，別擔心，您可以玩單人遊戲，或是找一些隨機玩家一起遊戲！沒有您旁邊那位討厭的臭朋友，好好體驗Can't Drive This的樂趣吧。沒錯！就是您現在想到的那位。
+                                    </li>
+                                </ul>
+                                <img src="~/img/Game_Story/Game_Story26/Game_Story26-3.gif" class="margin10px0"><br>
+                                <h6>客製化！</h6>
+                                <h6>您可能會問，如果沒有客製化功能的話，多人在線的遊戲樂趣何在？這是個很好的問題！Can't Drive This具有數不勝數的*可解鎖零件和車輛編輯器，因此您可以向所有人炫耀自己優秀的實力！但眾所周知的是，一次只有一名玩家駕駛汽車。另一名玩家建造道路。這就是為什麼我們還包括道路編輯器的原因！創建您的客製化的道路，和您的朋友一起在看似灑滿黃金的道路上競賽吧！</h6><br>
+                                <img src="~/img/Game_Story/Game_Story26/Game_Story26-4.gif" class="margin10px0"><br>
+                                <h6>功能列表</h6>
+                                <ul>
+                                    <li>賽車遊戲（這是什麼遊戲）</li>
+                                    <li>關卡編輯（遊戲也是這個！）</li>
+                                    <li>可客製化車輛</li>
+                                    <li>可客製化賽道</li>
+                                    <li>單人玩家</li>
+                                    <li>2人在線多人遊戲</li>
+                                    <li>本地多人遊戲（最多4名玩家分屏）</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    }
+}
+<section id="Game_Story_sec2">
+    <div class="container text-white">
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
+                <div class="col-md-12 margin10px0">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active text-info" data-toggle="tab" href="#Windows">Windows</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-info" data-toggle="tab" href="#Mac_OS_X">Mac OS X</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-info" data-toggle="tab" href="#SteamOSLinux">SteamOS + Linux</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="Windows">
+                            <div class="row">
+                                <div class="col-md-6 margin10px0">
+                                    <h6>最低配備:</h6>
+                                    <h6>作業系統: Windows 7 (64 bit) or Newer (64 bit) Windows OS</h6>
+                                    <h6>處理器: 2.5 GHz Dual core</h6>
+                                    <h6>記憶體: 4 GB 記憶體</h6>
+                                    <h6>顯示卡: NVIDIA GeForce 760, AMD Radeon R7 270X, or better</h6>
+                                    <h6>DirectX: 版本：11</h6>
+                                    <h6>網路: 寬頻網際網路連線</h6>
+                                    <h6>儲存空間: 1 GB 可用空間</h6>
+                                </div>
+                                <div class="col-md-6 margin10px0">
+                                    <h6>建議配備:</h6>
+                                    <h6>作業系統: Windows 7 (64 bit) or Newer (64 bit) Windows OS</h6>
+                                    <h6>處理器: 3.0+ GHz Quad core</h6>
+                                    <h6>記憶體: 8 GB 記憶體</h6>
+                                    <h6>顯示卡: NVIDIA GeForce GTX 1060, AMD Radeon RX 470, or better</h6>
+                                    <h6>DirectX: 版本：11</h6>
+                                    <h6>網路: 寬頻網際網路連線</h6>
+                                    <h6>儲存空間: 1 GB 可用空間</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="Mac_OS_X">
+                            <div class="row">
+                                <div class="col-md-6 margin10px0">
+                                    <h6>最低配備:</h6>
+                                    <h6>作業系統: OS X 10.11</h6>
+                                    <h6>處理器: 2.5 GHz Dual core</h6>
+                                    <h6>記憶體: 4 GB 記憶體</h6>
+                                    <h6>顯示卡: NVIDIA GeForce 760, AMD Radeon R7 270X, or better</h6>
+                                    <h6>網路: 寬頻網際網路連線</h6>
+                                    <h6>儲存空間: 1 GB 可用空間</h6>
+                                </div>
+                                <div class="col-md-6 margin10px0">
+                                    <h6>建議配備:</h6>
+                                    <h6>作業系統: OS X 10.11</h6>
+                                    <h6>處理器: 3.0+ GHz Quad core</h6>
+                                    <h6>記憶體: 8 GB 記憶體</h6>
+                                    <h6>顯示卡: NVIDIA GeForce GTX 1060, AMD Radeon RX 470, or better</h6>
+                                    <h6>網路: 寬頻網際網路連線</h6>
+                                    <h6>儲存空間: 1 GB 可用空間</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="SteamOSLinux">
+                            <div class="row">
+                                <div class="col-md-6 margin10px0">
+                                    <h6>最低配備:</h6>
+                                    <h6>作業系統: Linux</h6>
+                                    <h6>處理器: 3.0+ GHz Quad core</h6>
+                                    <h6>記憶體: 4 GB 記憶體</h6>
+                                    <h6>顯示卡: NVIDIA GeForce 760, AMD Radeon R7 270X, or better</h6>
+                                    <h6>網路: 寬頻網際網路連線</h6>
+                                    <h6>儲存空間: 1 GB 可用空間</h6>
+                                </div>
+                                <div class="col-md-6 margin10px0">
+                                    <h6>建議配備:</h6>
+                                    <h6>作業系統: Linux</h6>
+                                    <h6>處理器: 3.0+ GHz Quad core</h6>
+                                    <h6>記憶體: 4 GB 記憶體</h6>
+                                    <h6>顯示卡: NVIDIA GeForce GTX 1060, AMD Radeon RX 470, or better</h6>
+                                    <h6>網路: 寬頻網際網路連線</h6>
+                                    <h6>儲存空間: 1 GB 可用空間</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="Game_Story_sec3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
+                <div class="row container">
+                    <div class="col-md-12 margin10px0">
+                        <h3 class="text-warning">精彩影片</h3>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe src="https://www.youtube.com/embed/A6Kd1vMf-QY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe src="https://www.youtube.com/embed/awAWpZqYil4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe src="https://www.youtube.com/embed/SOH65WzbP-A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe src="https://www.youtube.com/embed/9nIuQRnDO-I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

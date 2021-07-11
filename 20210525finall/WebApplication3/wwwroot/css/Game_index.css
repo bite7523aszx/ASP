@@ -1,0 +1,106 @@
+table td {
+    color: aliceblue;
+}
+
+body {
+    background: url( '/public/images/v6/colored_body_top2.png?v=2' ) center top no-repeat #1b2838;
+}
+
+.nav-item .nav-link {
+    color: white;
+}
+#ultab .fw {
+   border-radius: 25px
+}
+#one a {
+    color: white;
+}
+
+    #one a:hover {
+        border: double;
+        border-color: #F75000;
+    }
+
+#div1 a:hover {
+    color: #FFDC35;
+}
+
+#check {
+    list-style-type: none;
+    width: 100%;
+}
+
+.nav-tabs {
+    border-bottom: none;
+}
+
+#div4 img {
+    margin-bottom: 30px
+}
+
+#carouselExampleIndicators {
+    margin-top: 10px;
+    margin-bottom: 30px
+}
+
+#div3 img {
+    margin-right: 100px
+}
+
+#div4 .card {
+    margin-bottom: 30px;
+    margin-right: 30px
+}
+
+/*#section1 ul li a {
+    color: yellowgreen;
+}*/
+
+
+#carouselExampleIndicators {
+}
+
+#div6 {
+    margin: 0 auto;
+}
+
+.carousel-control-prev-icon {
+    width: 100px;
+    height: 100px;
+}
+
+.carousel-control-next-icon {
+    width: 100px;
+    height: 100px;
+}
+/*}
+.single-cta i {
+    color: #ff5e14;
+    font-size: 30px;
+    float: left;
+    margin-top: 8px;
+}
+
+.cta-text {
+    padding-left: 15px;
+    display: inline-block;
+}
+
+    .cta-text h4 {
+        color: #fff;
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 2px;
+    }
+
+    .cta-text span {
+        color: #757575;
+        font-size: 15px;*/
+
+.fw a:active {
+    color: red;
+}
+
+.minmax {
+    width: 100%;
+}

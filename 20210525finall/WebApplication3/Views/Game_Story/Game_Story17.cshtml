@@ -1,0 +1,234 @@
+﻿@model IEnumerable<WebApplication3.Models.Game_mall>
+@{
+    ViewData["Title"] = "Game_Story17";
+    Layout = "Game_index";
+}
+@foreach (var item in Model)
+{
+    if (item.Game_number == 17)
+    {
+        <section id="Game_Story_title">
+            <div class="container text-warning">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="row container">
+                            <div class="col-md-12">
+                                <h1>@Html.DisplayFor(modelItem => item.Game_name)</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="Game_Story_imgmax">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="col-md-12">
+                            <div class="swiper-container gallery-top">
+                                <div class="swiper-wrapper">
+                                    @for (int i = 1; i <= 8; i++)
+                                    {
+                                        string img = $"Game_Story17-{i}.png";
+                                        <div class="swiper-slide"><img src="~/img/Game_Story/Game_Story17/@img"></div>
+                                    }
+                                </div>
+                                <!-- Add Arrows -->
+                                <div class="swiper-button-next swiper-button-white swiper-opacity"></div>
+                                <div class="swiper-button-prev swiper-button-white swiper-opacity"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="Game_Story_imgmin">
+            <div class="container ">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="col-md-12">
+                            <div class="swiper-container gallery-thumbs">
+                                <div class="swiper-wrapper">
+                                    @for (int i = 1; i <= 8; i++)
+                                    {
+                                        string img = $"Game_Story17-{i}.png";
+                                        <div class="swiper-slide"><img src="~/img/Game_Story/Game_Story17/@img"></div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Initialize Swiper -->
+        <script>
+            var galleryThumbs = new Swiper('.gallery-thumbs', {
+                spaceBetween: 8,
+                slidesPerView: 3,
+                loop: true,
+                freeMode: true,
+                loopedSlides: 4, //looped slides should be the same
+                watchSlidesVisibility: true,
+                watchSlidesProgress: true,
+            });
+            var galleryTop = new Swiper('.gallery-top', {
+                spaceBetween: 8,
+                loop: true,
+                loopedSlides: 4, //looped slides should be the same
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                thumbs: {
+                    swiper: galleryThumbs,
+                },
+            });
+        </script>
+        <section id="Game_Story_sec1">
+            <div class="container text-white">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="row container">
+                            <div class="col-md-8 margin10px0">
+                                <h3 class="text-warning">遊戲介紹</h3>
+                                <h5>一二三四五六七，節奏醫生擅救急。受《節奏天國》啟發，機製獨特而簡約的單鍵節奏遊戲《節奏醫生》期待各位白衣聖手的精彩表現！</h5>
+                            </div>
+                            <div class="col-md-4 margin10px0">
+                                <video autoplay muted loop id="Game_Story_mp4" class="margin10px0">
+                                    <source src="~/img/Game_Story/Game_Story17/Game_Story17-1.mp4" />
+                                    您的瀏覽器不支援此影音播放模式!
+                                </video>
+                                <h6>遊戲類型：@Html.DisplayFor(modelItem => item.Game_category)</h6>
+                                <h6>發行日期：@Html.DisplayFor(modelItem => item.Listing_date)</h6>
+                            </div>
+                            <div class="row h3_color margin10px0" style="width:100%">
+                                <div class="col-md-8">
+                                    <h3>購買：@Html.DisplayFor(modelItem => item.Game_name)</h3>
+                                </div>
+                                <div class="col-md-4">
+                                    <span>@Html.DisplayFor(modelItem => item.Unit_price)</span>
+                                    <form asp-controller="cart" asp-action="stroyaddcart">
+
+                                        <input type="hidden" name="Game_number" value="@item.Game_number">
+                                        <div>
+                                            <input placeholder="購買數量" name="quantity" value="" style="width:100px">
+                                            <button type="submit" style="border: none" data-placement="bottom" data-toggle="popover" data-trigger="hover" title="購物車" data-content="點擊圖片加入購物車">
+                                                <img src="~/img/Game_index/cart.png" />
+                                            </button>
+                                        </div>
+                                    </form>
+                                    <a class="btn btn-success" asp-controller="Cart" asp-action="Buy" asp-route-id="@item.Game_number">直接購買</a>
+                                </div>
+                            </div>
+                            <div class="col-md-12 margin10px0">
+                                <h3 class="text-warning">關於此遊戲</h3>
+                                <h6>遊戲簡介</h6>
+                                <h6>用一個按鍵拯救病苦疾患！</h6><br>
+                                <h6>
+                                    在《節奏醫生》的世界中，隨著心跳的節拍為病人心髒除顫能夠產生神奇的醫療效果。作為醫生，只需抓住完美時機在音樂第七拍處按下空格鍵。
+                                </h6><br>
+                                <h6>這款節奏遊戲可以被下列關鍵詞界定：</h6>
+                                <ul>
+                                    <li>簡單粗暴的操作哲學（在第七拍按鍵）；</li>
+                                    <br>
+                                    <li>華麗誇張的聲畫演出（將每首歌曲都視為 MV 來製作）；</li>
+                                    <br>
+                                    <li>花樣百出的視覺干擾（對的，比起視覺提示，更多出現的會是視覺干擾）；</li>
+                                    <br>
+                                    <li>怪誕的劇情設定（你需要扮演心臟急救的醫生，而你需要面對的病人則千奇百怪）。</li>
+                                    <br>
+                                </ul>
+                                <h6>請諸位新手醫生一定要當心，你可能會面對的病人各有各的症狀，對應著各種不同的音樂主題：交錯拍子，赫米奧拉（hemiola）拍子，不規則拍子等等。</h6><br>
+                                <h6>不過大家不用擔心這些非常拗口的陌生概念。不像大多數的節奏遊戲關卡只是從簡單到困難的排列，我們還通過循序漸進的設計，不斷加入新的要素和機製，對已有要素通過鞏固，強化，綜合，配合華麗的演出效果來逐漸讓遊戲內容漸入佳境。在不知不覺中，雖然玩家可能沒有直接接觸樂理知識，但也能在遊戲過程中對其得心應手，完美掌控。</h6><br>
+                                <h6>遊戲特色</h6>
+                                <ul>
+                                    <li>超過20個精心打造的關卡，包含豐富的劇情元素。</li>
+                                    <br>
+                                    <li>每一關都循序漸進地引入音樂機製，讓玩家易於掌握並享受成長的快樂。</li>
+                                    <br>
+                                    <li>在包羅萬象的故事線中穿插進行的醫生和患者的精彩演出。</li>
+                                    <br>
+                                    <li>一個人獨享，或者邀請朋友本地合作，都能充分領略遊戲的樂趣。</li>
+                                    <br>
+                                    <li>強大的關卡編輯器，玩家可以自己創建，分享和試玩社區關卡！同時可以添加自己的音樂，精心調整樂譜，並使用我們預設的50多種視覺特效和背景。</li>
+                                    <br>
+                                    <li>專為達人準備的高難度“暗夜模式”。</li>
+                                    <br>
+                                </ul>
+                                <h6>《節奏醫生》包含炫目彩色閃光畫面。如果有癲癇病史或者類似症狀，請務必在遊戲時加以小心。</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    }
+}
+<section id="Game_Story_sec2">
+    <div class="container text-white">
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
+                <div class="col-md-12 margin10px0">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active text-info" data-toggle="tab" href="#Windows">Windows</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-info" data-toggle="tab" href="#Mac_OS_X">Mac OS X</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="Windows">
+                            <div class="row">
+                                <div class="col-md-6 margin10px0">
+                                    <h6>最低配備:</h6>
+                                    <h6>作業系統: Windows XP, Vista, 7, 8, or 10</h6>
+                                    <h6>記憶體: 2 GB 記憶體</h6>
+                                    <h6>顯示卡: Intel Graphics 4000, 2GB VRAM</h6>
+                                    <h6>儲存空間: 1 GB 可用空間</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="Mac_OS_X">
+                            <div class="row">
+                                <div class="col-md-6 margin10px0">
+                                    <h6>最低配備:</h6>
+                                    <h6>作業系統: macOS 10.11</h6>
+                                    <h6>記憶體: 2 GB 記憶體</h6>
+                                    <h6>顯示卡: Intel Graphics 4000</h6>
+                                    <h6>儲存空間: 1 GB 可用空間</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="Game_Story_sec3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
+                <div class="row container">
+                    <div class="col-md-12 margin10px0">
+                        <h3 class="text-warning">精彩影片</h3>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe src="https://www.youtube.com/embed/-mrOmlTAXUI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe src="https://www.youtube.com/embed/l4xUTalUWus" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe src="https://www.youtube.com/embed/H5KAQnmTduQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe src="https://www.youtube.com/embed/s-rcJcYuGqY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

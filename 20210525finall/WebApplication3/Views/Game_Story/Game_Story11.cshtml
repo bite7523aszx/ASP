@@ -1,0 +1,215 @@
+﻿@model IEnumerable<WebApplication3.Models.Game_mall>
+@{
+    ViewData["Title"] = "Game_Story11";
+    Layout = "Game_index";
+}
+@foreach (var item in Model)
+{
+    if (item.Game_number == 11)
+    {
+        <section id="Game_Story_title">
+            <div class="container text-warning">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="row container">
+                            <div class="col-md-12">
+                                <h1>@Html.DisplayFor(modelItem => item.Game_name)</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="Game_Story_imgmax">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="col-md-12">
+                            <div class="swiper-container gallery-top">
+                                <div class="swiper-wrapper">
+                                    @for (int i = 1; i <= 8; i++)
+                                    {
+                                        string img = $"Game_Story11-{i}.png";
+                                        <div class="swiper-slide"><img src="~/img/Game_Story/Game_Story11/@img"></div>
+                                    }
+                                </div>
+                                <!-- Add Arrows -->
+                                <div class="swiper-button-next swiper-button-white swiper-opacity"></div>
+                                <div class="swiper-button-prev swiper-button-white swiper-opacity"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="Game_Story_imgmin">
+            <div class="container ">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="col-md-12">
+                            <div class="swiper-container gallery-thumbs">
+                                <div class="swiper-wrapper">
+                                    @for (int i = 1; i <= 8; i++)
+                                    {
+                                        string img = $"Game_Story11-{i}.png";
+                                        <div class="swiper-slide"><img src="~/img/Game_Story/Game_Story11/@img"></div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Initialize Swiper -->
+        <script>
+            var galleryThumbs = new Swiper('.gallery-thumbs', {
+                spaceBetween: 8,
+                slidesPerView: 3,
+                loop: true,
+                freeMode: true,
+                loopedSlides: 4, //looped slides should be the same
+                watchSlidesVisibility: true,
+                watchSlidesProgress: true,
+            });
+            var galleryTop = new Swiper('.gallery-top', {
+                spaceBetween: 8,
+                loop: true,
+                loopedSlides: 4, //looped slides should be the same
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                thumbs: {
+                    swiper: galleryThumbs,
+                },
+            });
+        </script>
+        <section id="Game_Story_sec1">
+            <div class="container text-white">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="row container">
+                            <div class="col-md-8 margin10px0">
+                                <h3 class="text-warning">遊戲介紹</h3>
+                                <h5>在《雙人成行》中踏上人生中最瘋狂的旅程。利用好友通行證*邀請好友免費遊玩。</h5>
+                            </div>
+                            <div class="col-md-4 margin10px0">
+                                <video autoplay muted loop id="Game_Story_mp4" class="margin10px0">
+                                    <source src="~/img/Game_Story/Game_Story11/Game_Story11-1.mp4" />
+                                    您的瀏覽器不支援此影音播放模式!
+                                </video>
+                                <h6>遊戲類型：@Html.DisplayFor(modelItem => item.Game_category)</h6>
+                                <h6>發行日期：@Html.DisplayFor(modelItem => item.Listing_date)</h6>
+                            </div>
+                            <div class="row h3_color margin10px0" style="width:100%">
+                                <div class="col-md-8">
+                                    <h3>購買：@Html.DisplayFor(modelItem => item.Game_name)</h3>
+                                </div>
+                                <div class="col-md-4">
+                                    <span>@Html.DisplayFor(modelItem => item.Unit_price)</span>
+                                    <form asp-controller="cart" asp-action="stroyaddcart">
+
+                                        <input type="hidden" name="Game_number" value="@item.Game_number">
+                                        <div>
+                                            <input placeholder="購買數量" name="quantity" value="" style="width:100px">
+                                            <button type="submit" style="border: none" data-placement="bottom" data-toggle="popover" data-trigger="hover" title="購物車" data-content="點擊圖片加入購物車">
+                                                <img src="~/img/Game_index/cart.png" />
+                                            </button>
+                                        </div>
+                                    </form>
+                                    <a class="btn btn-success" asp-controller="Cart" asp-action="Buy" asp-route-id="@item.Game_number">直接購買</a>
+                                </div>
+                            </div>
+                            <div class="col-md-12 margin10px0">
+                                <h3 class="text-warning">關於此遊戲</h3>
+                                <h6>在《雙人成行》這款專為雙人合作遊玩打造，跨越類型界線的橫向捲軸冒險遊戲中，踏上人生中最瘋狂的旅程。利用好友通行證*邀請好友免費遊玩。遊玩一對經常起爭執的夫妻科迪與小梅，兩人因為魔法而變成了玩偶。這兩個人被困在一個充滿驚喜的奇幻世界中，並且不得不挽救他們之間的感情。</h6><br>
+                                <h6>在每個新關卡中掌握獨特且有關連的角色技能。幫助彼此跨越各種令人意外的障礙與爆笑的時刻。踹向流氓松鼠毛茸茸的尾巴、駕駛一條內褲、在擁擠的夜店中成為 DJ，並在魔法雪景球中搭乘雪橇。體驗一段溫馨且爆笑的故事，其中相互交錯的劇情與遊戲玩法將帶來一段獨特有內涵的體驗。</h6><br>
+                                <h6>《雙人成行》由獲獎工作室 Hazelight 所打造，他們是業界的合作遊戲先驅。他們即將要帶你踏上一段瘋狂而美妙的旅途，而且你將在其中發現：雙人合作，勢在必行。</h6><br>
+                                <h6>關鍵特色</h6><br>
+                                <ul>
+                                    <li>完美的合作 ── 使用 遠端同樂**來邀請朋友一起免費遊玩，體驗這一段專門為兩人打造的刺激冒險。選擇遊玩線上合作還是分割螢幕遊戲，然後透過合作來化解各種不斷改變的挑戰並繼續前進。</li>
+                                    <br>
+                                    <li>歡樂而難纏的遊戲玩法 ── 無論是暴走的吸塵器，還是有魅力的愛情導師，你永遠猜不到接下來會碰上什麼東西。本遊戲中充滿各種跨風格挑戰，且每個關卡中有新增的角色技能供你掌握，另外你還能體驗到一種透過暗喻呈現遊戲玩法與劇情的創新互動故事。</li>
+                                    <br>
+                                    <li>一段適合所有人的愛情故事 ── 探索理解彼此時所面對的各種困難，將帶來什麼樣的溫馨故事。幫助化解科迪與小梅之間的分歧。認識各種古怪而討喜的角色。一起踏上冒險，一起打造這段寶貴的回憶！</li>
+                                    <br>
+                                </ul>
+                                <h6>關於 HAZELIGHT</h6>
+                                <h6>Hazelight 是一間位於瑞典斯德哥爾摩的獲獎獨立遊戲開發工作室。Hazelight 在 2014 年由 Josef Fares 所創立（獲獎遊戲《Brothers: A Tale of Two Sons》的影片總監與創造者），致力於突破創意屏障，並探索遊戲的潛能。在 2018 年，Hazelight 在 EA Originals 計畫下推出了贏得 BAFTA 的《A Way Out》── 史上第一款限合作第三人稱動作冒險遊戲。</h6><br>
+                                <h6>關於 EA ORIGINALS</h6>
+                                <h6>EA Originals 會幫助全球各地的一些有熱情、獨立且有才華的遊戲工作室宣傳他們的遊戲。在這些創意十足的遊戲開發商所打造出的迷人且啟發人的遊戲中，探索各種創新而難忘的遊戲體驗。</h6><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    }
+}
+<section id="Game_Story_sec2">
+    <div class="container text-white">
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
+                <div class="col-md-12 margin10px0">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active text-info" data-toggle="tab" href="#Windows">Windows</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="Windows">
+                            <div class="row">
+                                <div class="col-md-6 margin10px0">
+                                    <h6>最低配備: 需要 64 位元的處理器及作業系統</h6>
+                                    <h6>作業系統: Windows 8.1 64-bit or Windows 10 64-bit</h6>
+                                    <h6>處理器: Intel Core i3-2100T or AMD FX 6100</h6>
+                                    <h6>記憶體: 8 GB 記憶體</h6>
+                                    <h6>顯示卡: Nvidia GeForce GTX 660 or AMD R7 260x</h6>
+                                    <h6>DirectX: 版本：11</h6>
+                                    <h6>網路: 寬頻網際網路連線</h6>
+                                    <h6>儲存空間: 50 GB 可用空間</h6>
+                                </div>
+                                <div class="col-md-6 margin10px0">
+                                    <h6>建議配備: 需要 64 位元的處理器及作業系統</h6>
+                                    <h6>作業系統: Windows 8.1 64-bit or Windows 10 64-bit</h6>
+                                    <h6>處理器: Intel Core i5 3570K or AMD Ryzen 3 1300x</h6>
+                                    <h6>記憶體: 16 GB 記憶體</h6>
+                                    <h6>顯示卡: Nvidia GeForce GTX 980 or AMD R9 290X</h6>
+                                    <h6>DirectX: 版本：11</h6>
+                                    <h6>網路: 寬頻網際網路連線</h6>
+                                    <h6>儲存空間: 50 GB 可用空間</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="Game_Story_sec3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
+                <div class="row container">
+                    <div class="col-md-12 margin10px0">
+                        <h3 class="text-warning">精彩影片</h3>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe src="https://www.youtube.com/embed/thNNeiV_uwU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe src="https://www.youtube.com/embed/cZoydhOlLQY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe src="https://www.youtube.com/embed/Jsw37unEOYw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe src="https://www.youtube.com/embed/n4RV2Bk0e6Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,64 @@
+﻿@model IEnumerable<WebApplication3.Models.Salecs>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_Layout";
+    int count = 0;
+}
+<style>
+    span {
+        color: red;
+    }
+</style>
+<h1 class="text-center">銷售</h1>
+<table class="table container text-center">
+
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Gamename)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.count)
+            </th>
+            <th>
+               每一個遊戲賣出的金額
+            </th>
+            @*<th>
+            @Html.DisplayNameFor(model => model.price)
+        </th>*@
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <th>
+                @Html.DisplayFor(modelitem => item.Gamename)
+            </th>
+            @*<th>
+            @Html.DisplayFor(modelitem => item.price)
+        </th>*@
+            <th>
+                @if (item.count <= 10)
+                {
+                    <span>@item.count</span>
+                }
+                else
+                {
+                    @item.count
+                }
+            </th>
+            <th>
+                NT$@item.price 
+            </th>
+
+        </tr>
+          
+        }
+        
+
+    </tbody>
+</table>
+<div>
+    總收入:NT$@ViewBag.total
+</div>

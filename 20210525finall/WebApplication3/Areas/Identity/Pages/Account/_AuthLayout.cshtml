@@ -1,0 +1,74 @@
+﻿@{
+    Layout = "game_index";
+
+}
+<style>
+
+    div.login-logout-tab div.card-header {
+        padding: 0px 0px 12px 0px;
+        border-radius: 25px;
+    }
+
+    div.login-logout-tab ul.nav-tabs {
+        padding: 0px 0px -12px 0px;
+    }
+
+    div.login-logout-tab li.nav-item {
+        width: 50%;
+    }
+
+    div.login-logout-tab a.nav-link {
+        font-size: 25px;
+        color: #495057;
+        text-align: center;
+    }
+
+    div.card-content {
+        padding: 10px 20px;
+    }
+
+    .card-header {
+        background-color: white
+    }
+
+    #body {
+        border-radius: 20px;
+    }
+</style>
+<div class="row ">
+    <div class="col-md-6 offset-md-3">
+        <div id="body" class="card login-logout-tab badge-secondary">
+            <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/identity/Account/Login">登入</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/identity/Account/Register">註冊</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="card-content">
+                <div id="body" class="col-md-12">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    @RenderSection("Scripts", required: false)
+    <script>
+        $(function () {
+            var cuent = location.pathname;
+            $('.nav-tbas li a').each(function () {
+                var $this = $(this);
+                if (cuent.indexOf($this.attr("href")) !== -1) {
+                    $this.addClass('active');
+
+                }
+            })
+        })
+    </script>
+}
+

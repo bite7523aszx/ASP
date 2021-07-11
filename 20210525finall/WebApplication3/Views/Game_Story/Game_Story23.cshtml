@@ -1,0 +1,222 @@
+﻿@model IEnumerable<WebApplication3.Models.Game_mall>
+@{
+    ViewData["Title"] = "Game_Story23";
+    Layout = "Game_index";
+}
+@foreach (var item in Model)
+{
+    if (item.Game_number == 23)
+    {
+        <section id="Game_Story_title">
+            <div class="container text-warning">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="row container">
+                            <div class="col-md-12">
+                                <h1>@Html.DisplayFor(modelItem => item.Game_name)</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="Game_Story_imgmax">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="col-md-12">
+                            <div class="swiper-container gallery-top">
+                                <div class="swiper-wrapper">
+                                    @for (int i = 1; i <= 8; i++)
+                                    {
+                                        string img = $"Game_Story23-{i}.png";
+                                        <div class="swiper-slide"><img src="~/img/Game_Story/Game_Story23/@img"></div>
+                                    }
+                                </div>
+                                <!-- Add Arrows -->
+                                <div class="swiper-button-next swiper-button-white swiper-opacity"></div>
+                                <div class="swiper-button-prev swiper-button-white swiper-opacity"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="Game_Story_imgmin">
+            <div class="container ">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="col-md-12">
+                            <div class="swiper-container gallery-thumbs">
+                                <div class="swiper-wrapper">
+                                    @for (int i = 1; i <= 8; i++)
+                                    {
+                                        string img = $"Game_Story23-{i}.png";
+                                        <div class="swiper-slide"><img src="~/img/Game_Story/Game_Story23/@img"></div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Initialize Swiper -->
+        <script>
+            var galleryThumbs = new Swiper('.gallery-thumbs', {
+                spaceBetween: 8,
+                slidesPerView: 3,
+                loop: true,
+                freeMode: true,
+                loopedSlides: 4, //looped slides should be the same
+                watchSlidesVisibility: true,
+                watchSlidesProgress: true,
+            });
+            var galleryTop = new Swiper('.gallery-top', {
+                spaceBetween: 8,
+                loop: true,
+                loopedSlides: 4, //looped slides should be the same
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                thumbs: {
+                    swiper: galleryThumbs,
+                },
+            });
+        </script>
+        <section id="Game_Story_sec1">
+            <div class="container text-white">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="row container">
+                            <div class="col-md-8 margin10px0">
+                                <h3 class="text-warning">遊戲介紹</h3>
+                                <h5>TaleSpire is a beautiful way to play pen and paper RPGs online. Bring your stories to life and embark upon campaigns together with your friends, regardless of where you are in the world.</h5>
+                            </div>
+                            <div class="col-md-4 margin10px0">
+                                <video autoplay muted loop id="Game_Story_mp4" class="margin10px0">
+                                    <source src="~/img/Game_Story/Game_Story23/Game_Story23-1.mp4" />
+                                    您的瀏覽器不支援此影音播放模式!
+                                </video>
+                                <h6>遊戲類型：@Html.DisplayFor(modelItem => item.Game_category)</h6>
+                                <h6>發行日期：@Html.DisplayFor(modelItem => item.Listing_date)</h6>
+                            </div>
+                            <div class="row h3_color margin10px0" style="width:100%">
+                                <div class="col-md-8">
+                                    <h3>購買：@Html.DisplayFor(modelItem => item.Game_name)</h3>
+                                </div>
+                                <div class="col-md-4">
+                                    <span>@Html.DisplayFor(modelItem => item.Unit_price)</span>
+                                    <form asp-controller="cart" asp-action="stroyaddcart">
+
+                                        <input type="hidden" name="Game_number" value="@item.Game_number">
+                                        <div>
+                                            <input placeholder="購買數量" name="quantity" value="" style="width:100px">
+                                            <button type="submit" style="border: none" data-placement="bottom" data-toggle="popover" data-trigger="hover" title="購物車" data-content="點擊圖片加入購物車">
+                                                <img src="~/img/Game_index/cart.png" />
+                                            </button>
+                                        </div>
+                                    </form>
+                                    <a class="btn btn-success" asp-controller="Cart" asp-action="Buy" asp-route-id="@item.Game_number">直接購買</a>
+                                </div>
+                            </div>
+                            <div class="col-md-12 margin10px0">
+                                <h3 class="text-warning">關於此遊戲</h3>
+                                <p><img src="~/img/Game_Story/Game_Story23/Game_Story23-9.png" class="margin10px0"></p><br>
+                                <h6>Overview / What Is TaleSpire?</h6>
+                                <h6>TaleSpire is a beautiful way to play pen and paper RPGs online. Bring your stories to life and embark upon campaigns together with your friends, regardless of where you are in the world.</h6>
+                                <p><img src="~/img/Game_Story/Game_Story23/Game_Story23-1.gif" class="margin10px0"></p>
+                                <h6>With Talespire, the beauty and physicality of tabletop gaming meet the endless possibilities of a digital world. Here you can collaboratively build your worlds without compromising the handcrafted aesthetic of using traditional miniatures.</h6><br>
+                                <h6>
+                                    As a player, you can take on the mantle of multiple heroes and creatures, manage your stats, and express yourself using the growing emote system. Perform dice rolls directly on the board and interact with your environment — at least, as far as your GM will let you!
+                                </h6><br>
+                                <h6>As a GM, you can dazzle and thrill your friends by building expansive maps, setting up shots, and controlling immersive soundscapes to bring all your delightful and devious designs to life.</h6><br>
+                                <h6>TaleSpire is not tied to a specific game or ruleset. Whether you’re running a one-shot or a sprawling campaign, if it's on a square grid then we have your back. We are now in Early Access, so now is your chance to raise up your sword, rally your friends, and take your next adventure online with us.</h6><br>
+                                <p><img src="~/img/Game_Story/Game_Story23/Game_Story23-2.gif" class="margin10px0"></p><br>
+                                <h6>Building and play are one</h6>
+                                <h6>Setting the stage for your story takes no time at all with Talespire, but even if you forget to prep, it can all be added in while you play. Want to destroy a wall to reveal a secret passage? Do it! Want to rain down piles of gold from the heavens? You have the power. At any moment during your adventure, you (or multiple GMs) can jump into building mode and change the world without interrupting anything else. Our persistent online boards can be created at a moment’s notice, and everything is synchronized in real-time as you dice-roll your way to glory.</h6><br>
+                                <p><img src="~/img/Game_Story/Game_Story23/Game_Story23-3.gif" class="margin10px0"></p><br>
+                                <h6>A slew of tools to help you on your adventures</h6>
+                                <h6>It’s dangerous to go alone, but luckily we have a bunch of tools that can help, and all are as pleasing as they are useful. Beautiful dice, rulers and area markers, a range of emotes, and special modes for turn-based combat and cinematic sequences are at your disposal.</h6><br>
+                                <h6>A growing library of assets</h6>
+                                <h6>Pick from a plethora of pieces to create your scenes! The current roster stands at 150 miniatures, 750 tiles and props, and 50 unique audio tracks. Our library is ever-expanding; we produce fresh asset packs every month.</h6><br>
+                                <h6>Share your creations</h6>
+                                <h6>TaleSpire boards are designed to be easily shared, whether with friends or with the wider community on sites like TalesBazaar or TalesTavern. You can copy sections of your boards (slabs) and paste them as text outside of TaleSpire. Simply paste the text back into TaleSpire to summon the slab to your hand.</h6><br>
+                                <h6>This tale has only just begun</h6>
+                                <h6>Being in Early Access we still have plenty of adventures ahead of us. We have an active Discord community, which you can find here (https://discord.gg/talespire), and alongside your feedback we’re looking forward to developing the game’s features. So come, journey with us a while.</h6><br>
+                                <p><img src="~/img/Game_Story/Game_Story23/Game_Story23-10.png" class="margin10px0"></p><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    }
+}
+<section id="Game_Story_sec2">
+    <div class="container text-white">
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
+                <div class="col-md-12 margin10px0">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active text-info" data-toggle="tab" href="#Windows">Windows</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="Windows">
+                            <div class="row">
+                                <div class="col-md-6 margin10px0">
+                                    <h6>最低配備:</h6>
+                                    <h6>作業系統: Windows 10</h6>
+                                    <h6>處理器: 64bit</h6>
+                                    <h6>記憶體: 4 GB 記憶體</h6>
+                                    <h6>顯示卡: Graphics card with DX11.2 (shader model 5.0) capabilities.</h6>
+                                    <h6>DirectX: 版本：11</h6>
+                                    <h6>網路: 寬頻網際網路連線</h6>
+                                    <h6>儲存空間: 2 GB 可用空間</h6>
+                                </div>
+                                <div class="col-md-6 margin10px0">
+                                    <h6>建議配備:</h6>
+                                    <h6>作業系統: Windows 10</h6>
+                                    <h6>處理器: 64bit</h6>
+                                    <h6>記憶體: 8 GB 記憶體</h6>
+                                    <h6>顯示卡: Graphics card with DX11.2 (shader model 5.0) capabilities.</h6>
+                                    <h6>DirectX: 版本：11</h6>
+                                    <h6>網路: 寬頻網際網路連線</h6>
+                                    <h6>儲存空間: 2 GB 可用空間</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="Game_Story_sec3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
+                <div class="row container">
+                    <div class="col-md-12 margin10px0">
+                        <h3 class="text-warning">精彩影片</h3>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe src="https://www.youtube.com/embed/XdInc8-K1oM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe src="https://www.youtube.com/embed/sx53w7fCg6E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe src="https://www.youtube.com/embed/PkwX3G_WRF8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe src="https://www.youtube.com/embed/Hp5kyqgjo-c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

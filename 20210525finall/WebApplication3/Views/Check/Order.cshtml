@@ -1,0 +1,68 @@
+﻿@model IEnumerable<WebApplication3.Models.Order>
+
+@{
+    ViewData["Title"] = "Order";
+    Layout = "~/Views/Shared/game_index.cshtml";
+}
+
+
+<style>
+    th {
+        color: white;
+    }
+
+    h1 {
+        color: white;
+    }
+</style>
+
+<table class="table container text-center">
+    <thead>
+        <h1 class="container">訂單管理</h1>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Order_number)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Order_date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer_number)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Total)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model == null)
+        {
+
+        }
+        else
+        {
+           @foreach(var item in Model) 
+           { 
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Order_number)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Order_date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Customer_number)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Total)
+                </td>
+                <td>
+                    @Html.ActionLink("訂單明細", "Details", new { id = item.Order_number }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+            }
+        }
+        
+    </tbody>
+</table>

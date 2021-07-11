@@ -1,0 +1,60 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using WebApplication3.Areas.Identity.Data
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+<style>
+    #register, #login {
+        border: solid;
+        border-radius: 15px;
+        /*border-color:white;
+            background-color:black;*/
+    }
+
+    ul .btn-link {
+        border: solid;
+        border-bottom-color: white;
+        border-radius: 20px;
+        margin:2px;
+    }
+    .nav-link{
+        margin:2px;
+    }
+    #logout {
+        width: 100%
+    }
+</style>
+<ul class="navbar-nav d-md-inline-flex flex-md-row-reverse flex-grow-3">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <li class="nav-item">
+            <form id="logoutForm" class="form-inline text-white" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Game_mallView", new { area = "" })">
+                <button id="logout" type="submit" class="nav-link btn btn-link d-md-inline-flex flex-md-row-reverse  text-white btn-danger">登出</button>
+            </form>
+        </li>
+        <li class="nav-item">
+            <a id="manage" class="nav-link btn btn-link text-white btn-danger" @*asp-area="Identity" asp-page="/Account/Manage/Index"*@ readonly title="Manage">Hello @UserManager.GetUserName(User)!</a>
+        </li>
+        if (ViewBag.Game_point != null)
+        {
+            <li class="nav-item"> <a class="nav-link btn btn-link text-white btn-success" asp-controller="Game_mallView" asp-action="Storedvalue">@ViewBag.Game_point</a></li>
+        }
+        else
+        {
+            <li class="nav-item"> <a class="nav-link btn btn-link text-white btn-success" asp-controller="Game_mallView" asp-action="Storedvalue">儲值</a></li>
+        }
+        <li class="nav-item"> <a class="nav-link btn btn-link text-white btn-success" asp-controller="check" asp-action="Order">訂單管理</a></li>
+
+    }
+    else
+    {
+
+        <li class="nav-item">
+            <a class="nav-link text-white btn btn-danger" id="register" asp-area="Identity" asp-page="/Account/Register">註冊</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white btn btn-danger" id="login" asp-area="Identity" asp-page="/Account/Login">登入</a>
+        </li>
+
+    }
+</ul>

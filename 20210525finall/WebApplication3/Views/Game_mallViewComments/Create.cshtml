@@ -1,0 +1,49 @@
+﻿@model WebApplication3.Models.Game_mall
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>Game_mall</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Game_name" class="control-label"></label>
+                <input asp-for="Game_name" class="form-control" />
+                <span asp-validation-for="Game_name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Game_category" class="control-label"></label>
+                <input asp-for="Game_category" class="form-control" />
+                <span asp-validation-for="Game_category" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Unit_price" class="control-label"></label>
+                <input asp-for="Unit_price" class="form-control" />
+                <span asp-validation-for="Unit_price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Listing_date" class="control-label"></label>
+                <input asp-for="Listing_date" class="form-control" />
+                <span asp-validation-for="Listing_date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

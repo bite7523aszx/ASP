@@ -1,0 +1,218 @@
+﻿@model IEnumerable<WebApplication3.Models.Game_mall>
+@{
+    ViewData["Title"] = "Game_Story5";
+    Layout = "Game_index";
+}
+@foreach (var item in Model)
+{
+    if (item.Game_number == 5)
+    {
+        <section id="Game_Story_title">
+            <div class="container text-warning">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="row container">
+                            <div class="col-md-12">
+                                <h1>@Html.DisplayFor(modelItem => item.Game_name)</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="Game_Story_imgmax">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="col-md-12">
+                            <div class="swiper-container gallery-top">
+                                <div class="swiper-wrapper">
+                                    @for (int i = 1; i <= 8; i++)
+                                    {
+                                        string img = $"Game_Story5-{i}.png";
+                                        <div class="swiper-slide"><img src="~/img/Game_Story/Game_Story5/@img"></div>
+                                    }
+                                </div>
+                                <!-- Add Arrows -->
+                                <div class="swiper-button-next swiper-button-white swiper-opacity"></div>
+                                <div class="swiper-button-prev swiper-button-white swiper-opacity"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="Game_Story_imgmin">
+            <div class="container ">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="col-md-12">
+                            <div class="swiper-container gallery-thumbs">
+                                <div class="swiper-wrapper">
+                                    @for (int i = 1; i <= 8; i++)
+                                    {
+                                        string img = $"Game_Story5-{i}.png";
+                                        <div class="swiper-slide"><img src="~/img/Game_Story/Game_Story5/@img"></div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Initialize Swiper -->
+        <script>
+            var galleryThumbs = new Swiper('.gallery-thumbs', {
+                spaceBetween: 8,
+                slidesPerView: 3,
+                loop: true,
+                freeMode: true,
+                loopedSlides: 4, //looped slides should be the same
+                watchSlidesVisibility: true,
+                watchSlidesProgress: true,
+            });
+            var galleryTop = new Swiper('.gallery-top', {
+                spaceBetween: 8,
+                loop: true,
+                loopedSlides: 4, //looped slides should be the same
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                thumbs: {
+                    swiper: galleryThumbs,
+                },
+            });
+        </script>
+        <section id="Game_Story_sec1">
+            <div class="container text-white">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="row container">
+                            <div class="col-md-8 margin10px0">
+                                <h3 class="text-warning">遊戲介紹</h3>
+                                <h5>日本人氣益智遊戲《魔法氣泡》和舉世聞名的《俄羅斯方塊》再度強強聯手、推出新作《魔法氣泡特趣思俄羅斯方塊2》，讓各位玩家盡情炸裂氣泡、恣意消除方塊，來一場樂趣無窮的遊戲饗宴！</h5>
+                            </div>
+                            <div class="col-md-4 margin10px0">
+                                <video autoplay muted loop id="Game_Story_mp4" class="margin10px0">
+                                    <source src="~/img/Game_Story/Game_Story5/Game_Story5-1.mp4" />
+                                    您的瀏覽器不支援此影音播放模式!
+                                </video>
+                                <h6>遊戲類型：@Html.DisplayFor(modelItem => item.Game_category)</h6>
+                                <h6>發行日期：@Html.DisplayFor(modelItem => item.Listing_date)</h6>
+                            </div>
+                            <div class="row h3_color margin10px0" style="width:100%">
+                                <div class="col-md-8">
+                                    <h3>購買：@Html.DisplayFor(modelItem => item.Game_name)</h3>
+                                </div>
+                                <div class="col-md-4">
+                                    <span>@Html.DisplayFor(modelItem => item.Unit_price)</span>
+                                    <form asp-controller="cart" asp-action="stroyaddcart">
+
+                                        <input type="hidden" name="Game_number" value="@item.Game_number">
+                                        <div>
+                                            <input placeholder="購買數量" name="quantity" value="" style="width:100px">
+                                            <button type="submit" style="border: none" data-placement="bottom" data-toggle="popover" data-trigger="hover" title="購物車" data-content="點擊圖片加入購物車">
+                                                <img src="~/img/Game_index/cart.png" />
+                                            </button>
+                                        </div>
+                                    </form>
+                                    <a class="btn btn-success" asp-controller="Cart" asp-action="Buy" asp-route-id="@item.Game_number">直接購買</a>
+                                </div>
+                            </div>
+                            <div class="col-md-12 margin10px0">
+                                <h3 class="text-warning">關於此遊戲</h3>
+                                <h6>兩大傳奇遊戲再度聚首，終極益智遊戲於焉登場</h6>
+                                <h6>日本人氣益智遊戲《魔法氣泡》和舉世聞名的《俄羅斯方塊》再度強強聯手、推出新作，讓各位玩家盡情炸裂氣泡、恣意消除方塊，來一場樂趣無窮的遊戲饗宴！</h6><br><br>
+                                <h6>競技與多人合作遊戲</h6>
+                                <h6>在網路連線或單機模式中參與最多4人的對戰，包括競技性質的益智聯盟與全新的線上多人合作模式：多人頭目戰。</h6><br><br>
+                                <h6>老朋友、新面孔、還有那藍色的傢伙</h6>
+                                <h6>眾多角色任君挑選。除了熟悉的老朋友之外，也不乏全新面孔，其中包括索尼克、Marle、Rafisol以及海王子。</h6><br><br>
+                                <h6>拯救一個世界不夠，何不拯救兩個？</h6>
+                                <h6>探索「冒險」模式的新地圖，與多位角色一同踏上全新的冒險旅程、經歷全新的故事篇章，勇闖兩個合而為一的世界，並從邪惡的黑暗勢力手中拯救同伴。提升角色的HP、MP、攻擊力、防禦力和回復力，藉以強化隊伍以進行「技能戰」。</h6><br><br>
+                                <h6>極具RPG精神的新模式：技能戰</h6>
+                                <h6>投身「技能戰」豐富精彩的戰場，測試一下自己的實力。在此模式中，只要善用回復HP、改變氣泡顏色、消除LINE等強大的角色技能，隨時都有可能一舉扭轉戰局。仔細挑選技能相輔相成的角色以組成一支強大的隊伍，接著裝備強大的「道具卡片」然後邁向戰場吧，也別忘了要隨時注意自己的HP和MP！</h6><br><br>
+                                <h6>不知道怎麼玩？</h6>
+                                <h6>在完善健全的教學模式中磨練你的遊戲技巧，其中包含超過150堂互動式教學課程。</h6><br><br>
+                                <h6>樂無止境，趣味無邊</h6>
+                                <h6>你可以重複遊玩關卡以獲得更多獎勵、體驗不同的遊戲難度、研究出最喜歡的遊玩風格，也可以藉此解鎖新角色、背景和額外關卡等等。</h6><br>
+                                <p><img src="~/img/Game_Story/Game_Story5/Game_Story5-1.gif" class="margin10px0"></p><br>
+                                <h6>限時遊戲首發版</h6>
+                                <h6>用這款稀有「道具卡片」組合包，助你在《魔法氣泡特趣思俄羅斯方塊2》全新推出的「技能戰」中，提升策略層次、強化隊伍能力。組合包中還有3張特殊卡片，為你獻上《音速小子》系列中的道具！</h6><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    }
+}
+<section id="Game_Story_sec2">
+    <div class="container text-white">
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
+                <div class="col-md-12 margin10px0">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active text-info" data-toggle="tab" href="#Windows">Windows</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="Windows">
+                            <div class="row">
+                                <div class="col-md-6 margin10px0">
+                                    <h6>最低配備: 需要 64 位元的處理器及作業系統</h6>
+                                    <h6>作業系統: 8.1</h6>
+                                    <h6>處理器: Intel Core i3-6100 or AMD FX-4350</h6>
+                                    <h6>記憶體: 4 GB 記憶體</h6>
+                                    <h6>顯示卡: GeForce GTS 750, 1 GB or Radeon HD 5770, 1 GB</h6>
+                                    <h6>DirectX: 版本：11</h6>
+                                    <h6>儲存空間: 4 GB 可用空間</h6>
+                                    <h6>音效卡: DirectX9.0c</h6>
+                                    <h6>備註: CPU - Must support Intel AVX instruction set extension. Performance cannot be guaranteed with integrated graphics processing, or when VRAM is shared with main system memory.</h6>
+                                </div>
+                                <div class="col-md-6 margin10px0">
+                                    <h6>建議配備: 需要 64 位元的處理器及作業系統</h6>
+                                    <h6>作業系統: 10</h6>
+                                    <h6>處理器: Intel Core i5-2300 or AMD FX-8350</h6>
+                                    <h6>記憶體: 8 GB 記憶體</h6>
+                                    <h6>顯示卡: GeForce GTS 750Ti, 2 GB or Radeon HD 7770, 1 GB</h6>
+                                    <h6>DirectX: 版本：11</h6>
+                                    <h6>儲存空間: 4 GB 可用空間</h6>
+                                    <h6>音效卡: DirectX9.0c</h6>
+                                    <h6>備註: CPU - Must support Intel AVX instruction set extension. Performance cannot be guaranteed with integrated graphics processing, or when VRAM is shared with main system memory.</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="Game_Story_sec3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
+                <div class="row container">
+                    <div class="col-md-12 margin10px0">
+                        <h3 class="text-warning">精彩影片</h3>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe src="https://www.youtube.com/embed/o4BNSsCY3zI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe src="https://www.youtube.com/embed/6CQcKfMfxEA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe src="https://www.youtube.com/embed/h-VFqwzNHgo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe src="https://www.youtube.com/embed/6_ig74bXz5w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

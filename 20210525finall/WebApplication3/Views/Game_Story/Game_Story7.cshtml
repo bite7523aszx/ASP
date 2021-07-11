@@ -1,0 +1,219 @@
+﻿@model IEnumerable<WebApplication3.Models.Game_mall>
+@{
+    ViewData["Title"] = "Game_Story7";
+    Layout = "Game_index";
+}
+@foreach (var item in Model)
+{
+    if (item.Game_number == 7)
+    {
+        <section id="Game_Story_title">
+            <div class="container text-warning">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="row container">
+                            <div class="col-md-12">
+                                <h1>@Html.DisplayFor(modelItem => item.Game_name)</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="Game_Story_imgmax">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="col-md-12">
+                            <div class="swiper-container gallery-top">
+                                <div class="swiper-wrapper">
+                                    @for (int i = 1; i <= 8; i++)
+                                    {
+                                        string img = $"Game_Story7-{i}.png";
+                                        <div class="swiper-slide"><img src="~/img/Game_Story/Game_Story7/@img"></div>
+                                    }
+                                </div>
+                                <!-- Add Arrows -->
+                                <div class="swiper-button-next swiper-button-white swiper-opacity"></div>
+                                <div class="swiper-button-prev swiper-button-white swiper-opacity"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="Game_Story_imgmin">
+            <div class="container ">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="col-md-12">
+                            <div class="swiper-container gallery-thumbs">
+                                <div class="swiper-wrapper">
+                                    @for (int i = 1; i <= 8; i++)
+                                    {
+                                        string img = $"Game_Story7-{i}.png";
+                                        <div class="swiper-slide"><img src="~/img/Game_Story/Game_Story7/@img"></div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Initialize Swiper -->
+        <script>
+            var galleryThumbs = new Swiper('.gallery-thumbs', {
+                spaceBetween: 8,
+                slidesPerView: 3,
+                loop: true,
+                freeMode: true,
+                loopedSlides: 4, //looped slides should be the same
+                watchSlidesVisibility: true,
+                watchSlidesProgress: true,
+            });
+            var galleryTop = new Swiper('.gallery-top', {
+                spaceBetween: 8,
+                loop: true,
+                loopedSlides: 4, //looped slides should be the same
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                thumbs: {
+                    swiper: galleryThumbs,
+                },
+            });
+        </script>
+        <section id="Game_Story_sec1">
+            <div class="container text-white">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="row container">
+                            <div class="col-md-8 margin10px0">
+                                <h3 class="text-warning">遊戲介紹</h3>
+                                <h5>《Element TD 2》讓你結合眾多強大元素，建造出不同的獨特防禦塔台，而你的防線將於來襲的敵人之中受到考驗！與其他玩家合作或是決鬥，從而決定誰才是眾元素的大師！</h5>
+                            </div>
+                            <div class="col-md-4 margin10px0">
+                                <video autoplay muted loop id="Game_Story_mp4" class="margin10px0">
+                                    <source src="~/img/Game_Story/Game_Story7/Game_Story7-1.mp4" />
+                                    您的瀏覽器不支援此影音播放模式!
+                                </video>
+                                <h6>遊戲類型：@Html.DisplayFor(modelItem => item.Game_category)</h6>
+                                <h6>發行日期：@Html.DisplayFor(modelItem => item.Listing_date)</h6>
+                            </div>
+                            <div class="row h3_color margin10px0" style="width:100%">
+                                <div class="col-md-8">
+                                    <h3>購買：@Html.DisplayFor(modelItem => item.Game_name)</h3>
+                                </div>
+                                <div class="col-md-4">
+                                    <span>@Html.DisplayFor(modelItem => item.Unit_price)</span>
+                                    <form asp-controller="cart" asp-action="stroyaddcart">
+
+                                        <input type="hidden" name="Game_number" value="@item.Game_number">
+                                        <div>
+                                            <input placeholder="購買數量" name="quantity" value="" style="width:100px">
+                                            <button type="submit" style="border: none" data-placement="bottom" data-toggle="popover" data-trigger="hover" title="購物車" data-content="點擊圖片加入購物車">
+                                                <img src="~/img/Game_index/cart.png" />
+                                            </button>
+                                        </div>
+                                    </form>
+                                    <a class="btn btn-success" asp-controller="Cart" asp-action="Buy" asp-route-id="@item.Game_number">直接購買</a>
+                                </div>
+                            </div>
+                            <div class="col-md-12 margin10px0">
+                                <h3 class="text-warning">關於此遊戲</h3>
+                                <p><img src="~/img/Game_Story/Game_Story7/Game_Story7-9.png" class="margin10px0"></p><br>
+                                <h6>《Element TD 2》是多人塔防遊戲發展十五年的結晶。此遊戲的原型模組在《魔獸爭霸 3》、《星際爭霸 2》和《Dota 2》中累積超過五百萬總下載次數。《Element TD 2》作為獨立遊戲，其中具備眾多防禦性塔台，以及一連串不同的地圖，將會挑戰玩家的實力。</h6><br>
+                                <h6>融合不同元素</h6>
+                                <h6>六種不同元素相互融合，製造出 44 座獨特的塔台。此外，玩家亦需仔細觀察將來襲的敵人種類及它們所屬的元素，以制定出最佳的防禦策略。每種元素均有其強弱之處，而細心選擇塔台的升級路線是勝利的必要條件。</h6><br>
+                                <p><img src="~/img/Game_Story/Game_Story7/Game_Story7-1.gif" class="margin10px0"></p><br>
+                                <h6>與你的團隊一起征服敵人</h6>
+                                <h6>與最多八個隊友一起分享所擁有的元素能力、塔台升級路線，以及一起制定防守陣勢。你們將會面對一波接一波的敵人入侵，最後更會升級至無盡的魔王回合。</h6><br>
+                                <h6>毅力的試煉</h6>
+                                <h6>戰役模式暫時支援 28 個涉及不同地形、敵人種類及魔王的任務。在此模式中享受《Element TD》系列遊戲中前所未有的遊戲體驗。</h6><br>
+                                <p><img src="~/img/Game_Story/Game_Story7/Game_Story7-10.png" class="margin10px0"></p><br>
+                            </div>
+                            <div class="col-md-12">
+                                <h6>遊戲特色</h6>
+                                <ul>
+                                    <li>44 座具備獨特的能力與升級路線的塔台</li>
+                                    <li>在合作模式中與最多八人一同防守</li>
+                                    <li>能夠磨練你戰術的戰役模式</li>
+                                    <li>6 種元素以提供不同種類的塔台 (光、暗、水、火、木、土)</li>
+                                    <li>55 個回合以挑戰你的防線，還有一個無盡的魔王回合</li>
+                                    <li>12 個具有不同路線及美術設計的地圖以多樣化你的戰術</li>
+                                    <li>10 種可供你自定遊戲體驗的遊玩方式</li>
+                                    <li>使兩側面者在同一建造區域內向對方展示實力的決鬥模式</li>
+                                    <li>可在遍佈全球的伺服器上遊玩線上遊戲</li>
+                                    <li>供玩家爭奪最高分數的排行榜</li>
+                                    <li>能夠使你炫耀自己的勝利，或是從其他玩家那裡學習策略的重播系統</li>
+                                    <li>可供你自定建造者外觀的可解鎖外觀物品</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    }
+}
+<section id="Game_Story_sec2">
+    <div class="container text-white">
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
+                <div class="col-md-12 margin10px0">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active text-info" data-toggle="tab" href="#Windows">Windows</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="Windows">
+                            <div class="row">
+                                <div class="col-md-6 margin10px0">
+                                    <h6>最低配備: 需要 64 位元的處理器及作業系統</h6>
+                                    <h6>作業系統: Windows 8</h6>
+                                    <h6>處理器: 2.6 GHz Intel or AMD</h6>
+                                    <h6>記憶體: 6 GB 記憶體</h6>
+                                    <h6>顯示卡: 1024 MB VRAM</h6>
+                                    <h6>DirectX: 版本：9.0</h6>
+                                    <h6>網路: 寬頻網際網路連線</h6>
+                                    <h6>儲存空間: 9 GB 可用空間</h6>
+                                </div>
+                                <div class="col-md-6 margin10px0">
+                                    <h6>建議配備: 需要 64 位元的處理器及作業系統</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="Game_Story_sec3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
+                <div class="row container">
+                    <div class="col-md-12 margin10px0">
+                        <h3 class="text-warning">精彩影片</h3>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe src="https://www.youtube.com/embed/xoG0ROs8rKQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe src="https://www.youtube.com/embed/Bv0LkqELG_0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe src="https://www.youtube.com/embed/ujv2H53M80c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe src="https://www.youtube.com/embed/_gjCD_DdwDM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,246 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Swiper demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+  <!-- Link Swiper's CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+  <!-- Demo styles -->
+  <style>
+    html,body{
+      position: relative;
+      height: 100%;
+    }
+    .swiper-container {
+      width: 45%;
+      height: 50px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .swiper-slide {
+      background-size: cover;
+      background-position: center;
+    }
+
+    .gallery-top {
+      height: 30%;
+      width: 45%;
+    }
+
+    .gallery-thumbs {
+      height: 10%;
+      box-sizing: border-box;
+      padding: 10px 0;
+    }
+
+    .gallery-thumbs .swiper-slide {
+      height: 100%;
+      opacity: 0.4;
+    }
+
+    .gallery-thumbs .swiper-slide-thumb-active {
+      opacity: 1;
+    }
+    #Game_Story1_sec2 h6{
+        font-size: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Swiper -->
+  <section id="Game_Story1_title">
+      <div class="centainer">
+          <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h1>Totally Accurate Battle Simulator</h1>
+            </div>
+          </div>
+      </div>
+  </section>
+    <div class="swiper-container gallery-top">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide" style="background-image:url(/img/img1/Game_Story1-1.png)"></div>
+            <div class="swiper-slide" style="background-image:url(/img/img1/Game_Story1-3.png)"></div>
+            <div class="swiper-slide" style="background-image:url(/img/img1/Game_Story1-4.png)"></div>
+            <div class="swiper-slide" style="background-image:url(/img/img1/Game_Story1-5.png)"></div>
+            <div class="swiper-slide" style="background-image:url(/img/img1/Game_Story1-6.png)"></div>
+            <div class="swiper-slide" style="background-image:url(/img/img1/Game_Story1-7.png)"></div>
+            <div class="swiper-slide" style="background-image:url(/img/img1/Game_Story1-8.png)"></div>
+            <div class="swiper-slide" style="background-image:url(/img/img1/Game_Story1-9.png)"></div>
+        </div>
+        <!-- Add Arrows -->
+        <div class="swiper-button-next swiper-button-white"></div>
+        <div class="swiper-button-prev swiper-button-white"></div>
+    </div>
+
+  <div class="swiper-container gallery-thumbs">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide" style="background-image:url(/img/img1/Game_Story1-1.png)"></div>
+      <div class="swiper-slide" style="background-image:url(/img/img1/Game_Story1-3.png)"></div>
+      <div class="swiper-slide" style="background-image:url(/img/img1/Game_Story1-4.png)"></div>
+      <div class="swiper-slide" style="background-image:url(/img/img1/Game_Story1-5.png)"></div>
+      <div class="swiper-slide" style="background-image:url(/img/img1/Game_Story1-6.png)"></div>
+      <div class="swiper-slide" style="background-image:url(/img/img1/Game_Story1-7.png)"></div>
+      <div class="swiper-slide" style="background-image:url(/img/img1/Game_Story1-8.png)"></div>
+      <div class="swiper-slide" style="background-image:url(/img/img1/Game_Story1-9.png)"></div>
+    </div>
+  </div>
+  <!-- Swiper JS -->
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Initialize Swiper -->
+  <script>
+    var galleryThumbs = new Swiper('.gallery-thumbs', {
+      spaceBetween: 8,
+      slidesPerView: 3,
+      loop: true,
+      freeMode: true,
+      loopedSlides: 4, //looped slides should be the same
+      watchSlidesVisibility: true,
+      watchSlidesProgress: true,
+    });
+    var galleryTop = new Swiper('.gallery-top', {
+      spaceBetween: 8,
+      loop: true,
+      loopedSlides: 4, //looped slides should be the same
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      thumbs: {
+        swiper: galleryThumbs,
+      },
+    });
+  </script>
+<section id="Game_Story1_sec1">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
+                <div class="row container">
+                    <div class="col-md-8">
+                        <h3>遊戲介紹</h3>
+                        <h5>Be the leader of wobblers from ancient lands, spooky places, and fantasy worlds. Watch them fight in simulations made with the wobbliest physics system ever created, make your own wobblers in the unit creator and send your army off to fight your friends in multiplayer.</h5>
+                    </div>
+                    <div class="col-md-4">
+                        <video autoplay muted loop id="Game_Story_mp4" width="100%">
+                            <source src=/img/img1/Game_Story1-1.mp4"/>
+                            您的瀏覽器不支援此影音播放模式!
+                         </video>
+                        <h6>遊戲類型：休閒</h6>
+                        <h6>發行日期：2021-04-02</h6>
+                        <h6>價格：318</h6>
+                    </div>
+                    <div class="col-md-12">
+                        <h4>關於此遊戲</h4>
+                        <img src="/img/img1/Game_Story1-1.gif" width="100%">
+                        <h6>Be the leader of red and blue wobblers from ancient lands, spooky places, and fantasy worlds. Watch them fight in simulations made with the wobbliest physics system ever created.</h6>
+                        <h6>When you grow tired of the 100+ wobblers at your disposal you can make new ones in the unit creator.</h6>
+                        <h6>You can also send wobblers to fight your friends or strangers in online multiplayer!</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="Game_Story1_sec2">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
+                <div class="col-md-12">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#Windows">Windows</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#Mac_OS_X">Mac OS X</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane  active" id="Windows">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h6>最低配備: 需要 64 位元的處理器及作業系統</h6>
+                                    <h6>作業系統: Windows 7</h6>
+                                    <h6>處理器: Intel Core i5-2400 @ 3.1 GHz or AMD FX-6300 @ 3.5 GHz or equivalent</h6>
+                                    <h6>記憶體: 8 GB 記憶體</h6>
+                                    <h6>顯示卡: NVIDIA GeForce GTX 670 or AMD R9 270 (2GB VRAM with Shader Model 5.0 or better)</h6>
+                                    <h6>DirectX: 版本：10</h6>
+                                    <h6>儲存空間: 4 GB 可用空間</h6>
+                                    <h6>備註: Only runs on 64 bit systems</h6>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6>建議配備: 需要 64 位元的處理器及作業系統</h6>
+                                    <h6>作業系統: Win 10</h6>
+                                    <h6>處理器: Intel Core i7-4770 @ 3.4 GHz or AMD Ryzen 5 1600 @ 3.2 GHz or equivalent</h6>
+                                    <h6>記憶體: 8 GB 記憶體</h6>
+                                    <h6>顯示卡: NVIDIA GeForce GTX 970 or AMD R9 290X (4GB VRAM with Shader Model 5.0 or better)</h6>
+                                    <h6>DirectX: 版本：11</h6>
+                                    <h6>儲存空間: 6 GB 可用空間</h6>
+                                    <h6>備註: Only runs on 64 bit systems</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane  fade" id="Mac_OS_X">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h6>最低配備: 需要 64 位元的處理器及作業系統</h6>
+                                    <h6>作業系統: macOS Mojave</h6>
+                                    <h6>處理器: 2.3GHz dual-core Intel Core i5</h6>
+                                    <h6>記憶體: 8 GB 記憶體</h6>
+                                    <h6>顯示卡: Intel Iris Plus Graphics 640</h6>
+                                    <h6>儲存空間: 3 GB 可用空間</h6>
+                                    <h6>備註: Mac book pro 2018 or later</h6>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6>建議配備: 需要 64 位元的處理器及作業系統</h6>
+                                    <h6>作業系統: macOS Mojave</h6>
+                                    <h6>處理器: 2.9GHz 6-core Intel Core i9</h6>
+                                    <h6>記憶體: 8 GB 記憶體</h6>
+                                    <h6>顯示卡: Radeon Pro 560X</h6>
+                                    <h6>儲存空間: 3 GB 可用空間</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="Game_Story1_sec3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
+                <div class="row container">
+                    <div class="col-md-12">
+                        <h4>精彩影片</h4>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe width="100%" height="230" src="https://www.youtube.com/embed/O4oSjbFnJ6E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe width="100%" height="230" src="https://www.youtube.com/embed/_0fZyhGHjhI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe width="100%" height="230" src="https://www.youtube.com/embed/Ul-I64yPpsA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe width="100%" height="230" src="https://www.youtube.com/embed/h64EnpsIvys" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

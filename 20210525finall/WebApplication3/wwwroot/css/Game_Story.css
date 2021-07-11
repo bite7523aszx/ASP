@@ -1,0 +1,68 @@
+#Game_Story_imgmax img {
+    position: relative;
+    height: 500px;
+    width: 100%;
+}
+
+#Game_Story_imgmin img {
+    position: relative;
+    height: 96px;
+    width: 100%;
+}
+
+.swiper-opacity {
+    opacity:0.8;
+}
+
+.swiper-container {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.swiper-slide {
+    background-size: cover;
+    background-position: center;
+}
+
+.gallery-thumbs {
+    box-sizing: border-box;
+    margin: 10px 0;
+}
+
+.gallery-thumbs .swiper-slide {
+    height: 100%;
+    opacity: 0.4;
+}
+
+.gallery-thumbs .swiper-slide-thumb-active {
+    opacity: 1;
+}
+
+#Game_Story_sec2 h6 {
+    font-size: 10px;
+}
+.margin10px0 {
+    margin: 10px 0;
+}
+
+#Game_Story_sec1 img, video {
+    width: 100%;
+}
+
+#Game_Story_sec3 iframe {
+    width: 100%;
+    height: 230px;
+}
+
+.h3_color {
+    background: linear-gradient( -60deg, rgba(226,244,255,0.3) 5%,rgba(84, 107, 115, 0.3) 95%);
+}
+
+.right {
+    background-position: right;
+}
+
+#Game_Story_sec1 ul {
+    list-style-type: square;
+    margin: 0 20px;
+}

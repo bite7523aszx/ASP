@@ -1,0 +1,50 @@
+﻿@model IEnumerable<WebApplication3.Models.Game_mall>
+@{
+    ViewData["Title"] = "Action";
+    Layout = "game_index";
+    int a;
+    int count;
+}
+<section>
+    <div class="tab-content">
+        <div id="swVideo" class="container-fluid  tab-pane active container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        @foreach (var item in Model)
+                        {
+                            if (item.Game_category == "動作")
+                            {
+                                a = item.Game_number;
+                                count = item.Game_number;
+
+                                string Game_Storyid = $"Game_Story{a}";
+                                string u = $"{count}.jpg";
+                                string o = $"Movie{count}.webm";
+
+                                <div class="row" style="padding:30px 15px 10px">
+                                    <div class="col-xl-4 text-center" @*style="margin-right:-10px"*@>
+                                        <div class="card" style="width: 18rem">
+                                            <img class="card-img-top" src="~/img/Game_index/@u" alt="Card image cap">
+                                            <div class="card-body" style="padding:30px 15px 10px">
+                                                <h5 class="card-title"> @Html.DisplayFor(modelItem => item.Game_name)</h5>
+                                                <p class="card-text">@Html.DisplayFor(modelItem => item.Game_category)</p>
+                                                <p class="card-text">@Html.DisplayFor(modelItem => item.Unit_price)</p>
+                                                <a class="btn btn-success" asp-area="" asp-controller="Game_Story" asp-action="@Game_Storyid">Game Story</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-8" style=" margin-bottom:0px  ;margin-top:0px">
+                                        <video style="max-width:85% ;height:auto;" controls>
+                                            <source src="/Movie/@o" type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

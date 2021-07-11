@@ -1,0 +1,82 @@
+﻿@model WebApplication3.Models.Item
+@{
+    Layout = "game_index";
+    int count = 0;
+}
+<style>
+    #cart {
+        color: white;
+    }
+
+    table {
+        text-align: center;
+    }
+</style>
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+<body>
+
+    <div id="cart" class="container">
+        <h1>購物車</h1>
+
+        <div class="row">
+
+            <div class="col-sm-8">
+
+                <h4>我的購物車目前( @ViewBag.count 個商品 ) @ViewBag.total 元</h4>
+            </div>
+            <div class="col-sm-4 contShop">
+                <p><a class="btn btn-warning" asp-controller="Game_mallView" asp-action="index">繼續購物</a>
+            </div>
+        </div>
+        <form method="post" asp-controller="Cart" asp-action="index">
+            <table id="shop" border="1" class="table table-bordered table-hover">
+                <thead class="table bg-primary">
+                    <tr>
+                        <th>遊戲名稱</th>
+                        <th>遊戲類型</th>
+                        <th>數量</th>
+                        <th>單價</th>
+                        <th>小計</th>
+                        <th>移除購物車</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in ViewBag.cart)
+                    {
+                    <tr>
+                        <td>@item.Product.Game_name</td>
+                        <td>@item.Product.Game_category</td>
+                        @Html.EditorFor(model => Model.Game[count].Game_number, new { htmlAttributes = new { @class = "form-control", @style = "display:none" } })
+                        <td> @Html.EditorFor(model => Model.Game[count].Quantity) </td>
+                        <td>@item.Product.Unit_price</td>
+                        <td>@(item.Product.Unit_price * item.Quantity)</td>
+                        <td><a asp-controller="cart" asp-action="remove" asp-route-id="@item.Product.Game_number" onclick="return confirm('確定刪除')"><img src="~/img/Game_index/close.png" /></a></td>
+                        @*<td>@(item.Product.Unit_price * item.Quantity)</td>*@
+                    </tr>
+                       
+                        count++;
+                    }
+                    <tr>
+                        <td align="right" colspan="6">
+                            小計 :@ViewBag.total
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right" colspan="6">
+                            <input class="btn btn-danger" type="submit" value="結帳去" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+
+        <bt />
+        @*<a asp-controller="Game_mallView" asp-action="index">Coutince Shopping</a>*@
+
+    </div>
+</body>
+
+
+
+

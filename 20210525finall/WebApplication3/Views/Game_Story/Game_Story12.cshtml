@@ -1,0 +1,210 @@
+﻿@model IEnumerable<WebApplication3.Models.Game_mall>
+@{
+    ViewData["Title"] = "Game_Story12";
+    Layout = "Game_index";
+    string Game_Story_sec2_1 = "Intel Q9450 @ 2.6GHz or AMD Phenom II X6 @ 3.3 GHz";
+    string Game_Story_sec2_2 = "Intel i5 4690 @ 3.5GHz or AMD FX-8150 @ 3.6 GHz";
+}
+@foreach (var item in Model)
+{
+    if (item.Game_number == 12)
+    {
+        <section id="Game_Story_title">
+            <div class="container text-warning">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="row container">
+                            <div class="col-md-12">
+                                <h1>@Html.DisplayFor(modelItem => item.Game_name)</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="Game_Story_imgmax">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="col-md-12">
+                            <div class="swiper-container gallery-top">
+                                <div class="swiper-wrapper">
+                                    @for (int i = 1; i <= 8; i++)
+                                    {
+                                        string img = $"Game_Story12-{i}.png";
+                                        <div class="swiper-slide"><img src="~/img/Game_Story/Game_Story12/@img"></div>
+                                    }
+                                </div>
+                                <!-- Add Arrows -->
+                                <div class="swiper-button-next swiper-button-white swiper-opacity"></div>
+                                <div class="swiper-button-prev swiper-button-white swiper-opacity"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="Game_Story_imgmin">
+            <div class="container ">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="col-md-12">
+                            <div class="swiper-container gallery-thumbs">
+                                <div class="swiper-wrapper">
+                                    @for (int i = 1; i <= 8; i++)
+                                    {
+                                        string img = $"Game_Story12-{i}.png";
+                                        <div class="swiper-slide"><img src="~/img/Game_Story/Game_Story12/@img"></div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Initialize Swiper -->
+        <script>
+            var galleryThumbs = new Swiper('.gallery-thumbs', {
+                spaceBetween: 8,
+                slidesPerView: 3,
+                loop: true,
+                freeMode: true,
+                loopedSlides: 4, //looped slides should be the same
+                watchSlidesVisibility: true,
+                watchSlidesProgress: true,
+            });
+            var galleryTop = new Swiper('.gallery-top', {
+                spaceBetween: 8,
+                loop: true,
+                loopedSlides: 4, //looped slides should be the same
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                thumbs: {
+                    swiper: galleryThumbs,
+                },
+            });
+        </script>
+        <section id="Game_Story_sec1">
+            <div class="container text-white">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="row container">
+                            <div class="col-md-8 margin10px0">
+                                <h3 class="text-warning">遊戲介紹</h3>
+                                <h5>Sea of Thieves 無論在航行、打鬥或冒險、掠奪上都能讓您深刻體驗海盜生活，成為自立為王的傳奇海盜。多樣角色讓您可以自由探索遊戲世界，以及自由選擇與玩家互動的方式。</h5>
+                            </div>
+                            <div class="col-md-4 margin10px0">
+                                <video autoplay muted loop id="Game_Story_mp4" class="margin10px0">
+                                    <source src="~/img/Game_Story/Game_Story12/Game_Story12-1.mp4" />
+                                    您的瀏覽器不支援此影音播放模式!
+                                </video>
+                                <h6>遊戲類型：@Html.DisplayFor(modelItem => item.Game_category)</h6>
+                                <h6>發行日期：@Html.DisplayFor(modelItem => item.Listing_date)</h6>
+                            </div>
+                            <div class="row h3_color margin10px0" style="width:100%">
+                                <div class="col-md-8">
+                                    <h3>購買：@Html.DisplayFor(modelItem => item.Game_name)</h3>
+                                </div>
+                                <div class="col-md-4">
+                                    <span>@Html.DisplayFor(modelItem => item.Unit_price)</span>
+                                    <form asp-controller="cart" asp-action="stroyaddcart">
+
+                                        <input type="hidden" name="Game_number" value="@item.Game_number">
+                                        <div>
+                                            <input placeholder="購買數量" name="quantity" value="" style="width:100px">
+                                            <button type="submit" style="border: none" data-placement="bottom" data-toggle="popover" data-trigger="hover" title="購物車" data-content="點擊圖片加入購物車">
+                                                <img src="~/img/Game_index/cart.png" />
+                                            </button>
+                                        </div>
+                                    </form>
+                                    <a class="btn btn-success" asp-controller="Cart" asp-action="Buy" asp-route-id="@item.Game_number">直接購買</a>
+                                </div>
+                            </div>
+                            <div class="col-md-12 margin10px0">
+                                <h3 class="text-warning">關於此遊戲</h3>
+                                <h6>遊戲介紹</h6>
+                                <h6>Sea of Thieves 無論在航行、打鬥或冒險、掠奪上都能讓您深刻體驗海盜生活，成為自立為王的傳奇海盜。多樣角色讓您可以自由探索遊戲世界，以及自由選擇與玩家互動的方式。</h6>
+                                <h6>無論您是組隊起航或獨自出海，都可在這個共享世界的冒險中遇到其他船員。是敵是友，就看您如何回應他們了。</h6>
+                                <h6>遼闊的開放世界</h6>
+                                <h6>航向遼闊、開放的世界，發現隱藏其中的原始島嶼、沉沒船隻和神秘遺物。踏上尋找失落寶藏的旅程、追逐受詛咒的骷髏船長，或者幫貿易公司收集價值連城的貨物。狩獵、捕魚，或挑戰豐富的可選目標及支線任務。</h6><br>
+                                <h6>永難忘懷的劇情</h6>
+                                <h6>遊玩傳奇故事、體驗 Sea of Thieves 風格獨特、貫穿故事劇情的戰役。橫跨 2 條壯闊故事線的 11 篇故事、彷彿電影般的第一人稱視角任務，讓您沉浸在長達 30 小時的極致海盜傳奇中。</h6><br>
+                                <h6>成為傳奇</h6>
+                                <h6>在成為傳奇海盜的旅途上收集戰利品、建立聲望，並用辛苦賺來的獎勵奠定您個人的獨特著裝風格。冒險份子、探險家、征服者，您會成為怎樣的傳奇呢？</h6><br>
+                                <h6>不斷進化的遊戲</h6>
+                                <h6>經歷五次內容擴展與幾乎一整年的每月更新，Sea of Thieves 是一款不斷推陳出新、以服務玩家為導向的遊戲。記得每個月回來看看我們又新增了哪些新內容喔。</h6><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    }
+}
+<section id="Game_Story_sec2">
+    <div class="container text-white">
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
+                <div class="col-md-12 margin10px0">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active text-info" data-toggle="tab" href="#Windows">Windows</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="Windows">
+                            <div class="row">
+                                <div class="col-md-6 margin10px0">
+                                    <h6>最低配備: 需要 64 位元的處理器及作業系統</h6>
+                                    <h6>作業系統: Windows 10</h6>
+                                    <h6>處理器: @Game_Story_sec2_1</h6>
+                                    <h6>記憶體: 4 GB 記憶體</h6>
+                                    <h6>顯示卡: Nvidia GeForce GTX 650 or AMD Radeon 7750</h6>
+                                    <h6>DirectX: 版本：11</h6>
+                                    <h6>儲存空間: 50 GB 可用空間</h6>
+                                </div>
+                                <div class="col-md-6 margin10px0">
+                                    <h6>建議配備: 需要 64 位元的處理器及作業系統</h6>
+                                    <h6>作業系統: Windows 10</h6>
+                                    <h6>處理器: @Game_Story_sec2_2</h6>
+                                    <h6>記憶體: 8 GB 記憶體</h6>
+                                    <h6>顯示卡: Nvidia GeForce GTX 770 or AMD Radeon R9 380x</h6>
+                                    <h6>DirectX: 版本：11</h6>
+                                    <h6>儲存空間: 50 GB 可用空間</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="Game_Story_sec3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
+                <div class="row container">
+                    <div class="col-md-12 margin10px0">
+                        <h3 class="text-warning">精彩影片</h3>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe src="https://www.youtube.com/embed/4l2wyTCc5DM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe src="https://www.youtube.com/embed/Mg-_6ejG5gs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe src="https://www.youtube.com/embed/_E6iuJHNFhU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><iframe src="https://www.youtube.com/embed/ec_mpBo9vkw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
